@@ -1,0 +1,85 @@
+##
+## Copyright (c) 2023 NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+##
+## NVIDIA CORPORATION, its affiliates and licensors retain all intellectual
+## property and proprietary rights in and to this material, related
+## documentation and any modifications thereto. Any use, reproduction,
+## disclosure or distribution of this material and related documentation
+## without an express license agreement from NVIDIA CORPORATION or
+## its affiliates is strictly prohibited.
+##
+
+collision_spheres:
+  psm_yaw_link:
+    - "center": [-0.047, 0.052, 0.141]
+      "radius": 0.05886
+    - "center": [-0.048, -0.045, 0.141]
+      "radius": 0.05886
+    - "center": [-0.041, 0.035, -0.06]
+      "radius": 0.05814
+    - "center": [-0.043, 0.044, 0.032]
+      "radius": 0.05743
+    - "center": [-0.048, -0.059, 0.047]
+      "radius": 0.05743
+    - "center": [-0.057, -0.046, -0.05]
+      "radius": 0.05671
+  psm_base_link:
+    - "center": [0.005, -0.249, 0.002]
+      "radius": 0.06
+    - "center": [-0.006, -0.243, -0.107]
+      "radius": 0.04
+    - "center": [0.001, -0.197, -0.102]
+      "radius": 0.04
+  psm_pitch_back_link:
+    - "center": [-0.062, -0.064, 0.021]
+      "radius": 0.06199
+    - "center": [-0.077, 0.016, 0.025]
+      "radius": 0.06131
+    - "center": [0.05, -0.031, 0.017]
+      "radius": 0.06062
+  psm_pitch_bottom_link:
+    - "center": [0.062, -0.006, 0.015]
+      "radius": 0.03311
+    - "center": [-0.0, -0.004, 0.014]
+      "radius": 0.03311
+    - "center": [0.193, -0.008, 0.008]
+      "radius": 0.03258
+    - "center": [-0.065, -0.01, 0.016]
+      "radius": 0.03521
+    - "center": [0.129, -0.002, 0.018]
+      "radius": 0.03311
+  psm_pitch_end_link:
+    - "center": [-0.016, 0.001, 0.005]
+      "radius": 0.03868
+    - "center": [-0.003, -0.305, -0.008]
+      "radius": 0.03754
+    - "center": [-0.028, 0.079, 0.016]
+      "radius": 0.03411
+  psm_main_insertion_link:
+    - "center": [0.001, 0.003, -0.012]
+      "radius": 0.02609
+    - "center": [0.0, -0.002, 0.016]
+      "radius": 0.02609
+    - "center": [-0.0, -0.011, -0.027]
+      "radius": 0.0242
+  psm_tool_pitch_link:
+    - "center": [0.004, 0.001, 0.001]
+      "radius": 0.00691
+  psm_tool_roll_link:
+    - "center": [-0.0, 0.001, -0.006]
+      "radius": 0.00688
+  psm_tool_yaw_link:
+    - "center": [-0.0, 0.001, 0.001]
+      "radius": 0.00688
+  psm_tool_gripper2_link:
+    - "center": [0.004, 0.001, -0.002]
+      "radius": 0.0032
+    - "center": [0.004, 0.001, -0.002]
+      "radius": 0.0052
+    - "center": [-0.002, -0.002, -0.002]
+      "radius": 0.0052
+  psm_tool_gripper1_link:
+    - "center": [-0.004, 0.002, -0.0]
+      "radius": 0.00519
+    - "center": [0.002, -0.002, -0.0]
+      "radius": 0.00519

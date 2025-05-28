@@ -18,6 +18,7 @@ from matplotlib import cm
 from omni.isaac.core import World
 from omni.isaac.core.objects import cuboid
 from omni.isaac.core.robots import Robot
+from omni.isaac.core.articulations.articulation import Articulation
 from pxr import UsdPhysics
 
 # CuRobo
@@ -159,7 +160,7 @@ def add_robot_to_scene(
 
     base_link_name = robot_config["kinematics"]["base_link"]
 
-    robot_p = Robot(
+    robot_p = Articulation(
         prim_path=robot_path + "/" + base_link_name,
         name=robot_name,
     )

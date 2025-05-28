@@ -47,7 +47,8 @@ from omni.isaac.core.utils.types import ArticulationAction
 
 try:
     # Third Party
-    from omni.isaac.urdf import _urdf  # isaacsim 2022.2
+    # from omni.isaac.urdf import _urdf  # isaacsim 2022.2
+    from isaacsim.asset.importer.urdf import _urdf
 except ImportError:
     from omni.importer.urdf import _urdf  # isaac sim 2023.1
 

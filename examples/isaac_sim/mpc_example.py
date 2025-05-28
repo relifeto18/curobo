@@ -43,7 +43,7 @@ parser.add_argument(
     default=False,
 )
 
-parser.add_argument("--robot", type=str, default="franka.yml", help="robot configuration to load")
+parser.add_argument("--robot", type=str, default="franka", help="robot configuration to load")
 args = parser.parse_args()
 
 ###########################################################
@@ -172,7 +172,7 @@ def main():
 
     tensor_args = TensorDeviceType()
 
-    robot_cfg = load_yaml(join_path(get_robot_configs_path(), args.robot))["robot_cfg"]
+    robot_cfg = load_yaml(join_path(get_robot_configs_path(), args.robot + ".yml"))["robot_cfg"]
 
     j_names = robot_cfg["kinematics"]["cspace"]["joint_names"]
     default_config = robot_cfg["kinematics"]["cspace"]["retract_config"]
@@ -198,7 +198,7 @@ def main():
 
     tensor_args = TensorDeviceType()
 
-    robot_cfg = load_yaml(join_path(get_robot_configs_path(), args.robot))["robot_cfg"]
+    robot_cfg = load_yaml(join_path(get_robot_configs_path(), args.robot + ".yml"))["robot_cfg"]
 
     world_cfg_table = WorldConfig.from_dict(
         load_yaml(join_path(get_world_configs_path(), "collision_table.yml"))

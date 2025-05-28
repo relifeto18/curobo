@@ -40,7 +40,7 @@ parser.add_argument(
 )
 
 parser.add_argument(
-    "--robot", type=str, default="dual_ur10e.yml", help="robot configuration to load"
+    "--robot", type=str, default="dual_ur10e", help="robot configuration to load"
 )
 args = parser.parse_args()
 
@@ -116,7 +116,7 @@ def main():
 
     tensor_args = TensorDeviceType()
 
-    robot_cfg = load_yaml(join_path(get_robot_configs_path(), args.robot))["robot_cfg"]
+    robot_cfg = load_yaml(join_path(get_robot_configs_path(), args.robot + ".yml"))["robot_cfg"]
 
     j_names = robot_cfg["kinematics"]["cspace"]["joint_names"]
     default_config = robot_cfg["kinematics"]["cspace"]["retract_config"]
@@ -295,7 +295,7 @@ def main():
         if (
             np.linalg.norm(cube_position - target_pose) > 1e-3
             and np.linalg.norm(past_pose - cube_position) == 0.0
-            and np.max(np.abs(sim_js.velocities)) < 0.5
+            and np.max(np.abs(sim_js.velocities)) < 1.0
         ):
             # Set EE teleop goals, use cube for simple non-vr init:
             ee_translation_goal = cube_position
@@ -320,6 +320,7 @@ def main():
             # ik_result = ik_solver.solve_single(ik_goal, cu_js.position.view(1,-1), cu_js.position.view(1,1,-1))
 
             succ = result.success.item()  # ik_result.success.item()
+            print(succ)
             if succ:
                 cmd_plan = result.get_interpolated_plan()
                 cmd_plan = motion_gen.get_full_js(cmd_plan)

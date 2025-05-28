@@ -1,0 +1,561 @@
+##
+## Copyright (c) 2023 NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+##
+## NVIDIA CORPORATION, its affiliates and licensors retain all intellectual
+## property and proprietary rights in and to this material, related
+## documentation and any modifications thereto. Any use, reproduction,
+## disclosure or distribution of this material and related documentation
+## without an express license agreement from NVIDIA CORPORATION or
+## its affiliates is strictly prohibited.
+##
+
+robot_cfg:
+  kinematics:
+    usd_path: robot/iiwa_allegro_description/configuration/iiwa_reflex.usd
+    usd_robot_root: "/robot"
+    isaac_usd_path: robot/iiwa_allegro_description/configuration/iiwa_reflex_sim.usd
+    usd_flip_joints: {}
+    usd_flip_joint_limits: []
+
+    urdf_path: robot/iiwa_allegro_description/iiwa_reflex.urdf
+    asset_root_path: robot/iiwa_allegro_description
+    
+    base_link: "world"
+    ee_link: "reflex_palm_link"
+    link_names: null
+    lock_joints: 
+      {
+        "reflex_preshape_joint_1": 0.0,
+        "reflex_proximal_joint_1": 0.0,
+        "reflex_preshape_joint_2": 0.0,
+        "reflex_proximal_joint_2": 0.0,
+        "reflex_proximal_joint_3": 0.0,
+      }
+    extra_links: null
+
+    
+    collision_link_names: 
+      - world
+      - robot_table_link
+      - iiwa_link_0
+      - iiwa_link_1
+      - iiwa_link_2
+      - iiwa_link_3
+      - iiwa_link_4
+      - iiwa_link_5
+      - iiwa_link_6
+      - iiwa_link_7
+      - iiwa_link_ee
+      - reflex2_to_iiwa_mount
+      - reflex2_extra_shell
+      - reflex_shell_link
+      - reflex_pad_link
+      - reflex_palm_link
+      - reflex_swivel_link_1
+      - reflex_proximal_link_1
+      - reflex_flex_link_1
+      - reflex_distal_link_1
+      - reflex_distal_pad_link_1
+      - reflex_proximal_pad_link_1
+      - reflex_swivel_link_2
+      - reflex_proximal_link_2
+      - reflex_flex_link_2
+      - reflex_distal_link_2
+      - reflex_distal_pad_link_2
+      - reflex_proximal_pad_link_2
+      - reflex_proximal_link_3
+      - reflex_flex_link_3
+      - reflex_distal_link_3
+      - reflex_distal_pad_link_3
+      - reflex_proximal_pad_link_3
+    collision_spheres: spheres/iiwa_reflex.yml 
+    collision_sphere_buffer: 0.005 
+    extra_collision_spheres: {}
+    self_collision_ignore: 
+      {
+        world: [robot_table_link, iiwa_link_0],
+        robot_table_link: [iiwa_link_0],
+        iiwa_link_0: [iiwa_link_1, iiwa_link_2],
+        iiwa_link_1: [iiwa_link_2, iiwa_link_3],
+        iiwa_link_2: [iiwa_link_3, iiwa_link_4],
+        iiwa_link_3: [iiwa_link_4, iiwa_link_5],
+        iiwa_link_4: [iiwa_link_5, iiwa_link_6],
+        iiwa_link_5: [iiwa_link_6, iiwa_link_7],
+        iiwa_link_6: 
+          [
+            iiwa_link_7, 
+            iiwa_link_ee, 
+            reflex2_to_iiwa_mount, 
+            reflex2_extra_shell, 
+            reflex_shell_link, 
+            reflex_pad_link, 
+            reflex_palm_link
+          ],
+        iiwa_link_7: 
+          [
+            iiwa_link_ee, 
+            reflex2_to_iiwa_mount, 
+            reflex2_extra_shell, 
+            reflex_shell_link, 
+            reflex_pad_link, 
+            reflex_palm_link,
+            reflex_swivel_link_1,
+            reflex_proximal_link_1,
+            reflex_proximal_pad_link_1,
+            reflex_flex_link_1,
+            reflex_distal_link_1,
+            reflex_distal_pad_link_1,
+            reflex_swivel_link_2,
+            reflex_proximal_link_2,
+            reflex_proximal_pad_link_2,
+            reflex_flex_link_2,
+            reflex_distal_link_2,
+            reflex_distal_pad_link_2,
+            reflex_proximal_link_3,
+            reflex_proximal_pad_link_3,
+            reflex_flex_link_3,
+            reflex_distal_link_3,
+            reflex_distal_pad_link_3
+          ],
+        iiwa_link_ee: 
+          [
+            reflex2_to_iiwa_mount, 
+            reflex2_extra_shell, 
+            reflex_shell_link, 
+            reflex_pad_link, 
+            reflex_palm_link,
+            reflex_swivel_link_1,
+            reflex_proximal_link_1,
+            reflex_proximal_pad_link_1,
+            reflex_flex_link_1,
+            reflex_distal_link_1,
+            reflex_distal_pad_link_1,
+            reflex_swivel_link_2,
+            reflex_proximal_link_2,
+            reflex_proximal_pad_link_2,
+            reflex_flex_link_2,
+            reflex_distal_link_2,
+            reflex_distal_pad_link_2,
+            reflex_proximal_link_3,
+            reflex_proximal_pad_link_3,
+            reflex_flex_link_3,
+            reflex_distal_link_3,
+            reflex_distal_pad_link_3
+          ],
+        reflex2_to_iiwa_mount: 
+          [
+            reflex2_extra_shell, 
+            reflex_shell_link, 
+            reflex_pad_link, 
+            reflex_palm_link,
+            reflex_swivel_link_1,
+            reflex_proximal_link_1,
+            reflex_proximal_pad_link_1,
+            reflex_flex_link_1,
+            reflex_distal_link_1,
+            reflex_distal_pad_link_1,
+            reflex_swivel_link_2,
+            reflex_proximal_link_2,
+            reflex_proximal_pad_link_2,
+            reflex_flex_link_2,
+            reflex_distal_link_2,
+            reflex_distal_pad_link_2,
+            reflex_proximal_link_3,
+            reflex_proximal_pad_link_3,
+            reflex_flex_link_3,
+            reflex_distal_link_3,
+            reflex_distal_pad_link_3
+          ],
+        reflex2_extra_shell: 
+          [
+            reflex_shell_link, 
+            reflex_pad_link, 
+            reflex_palm_link,
+            reflex_swivel_link_1,
+            reflex_proximal_link_1,
+            reflex_proximal_pad_link_1,
+            reflex_flex_link_1,
+            reflex_distal_link_1,
+            reflex_distal_pad_link_1,
+            reflex_swivel_link_2,
+            reflex_proximal_link_2,
+            reflex_proximal_pad_link_2,
+            reflex_flex_link_2,
+            reflex_distal_link_2,
+            reflex_distal_pad_link_2,
+            reflex_proximal_link_3,
+            reflex_proximal_pad_link_3,
+            reflex_flex_link_3,
+            reflex_distal_link_3,
+            reflex_distal_pad_link_3
+          ],
+        reflex_shell_link: 
+          [
+            reflex_pad_link,
+            reflex_palm_link,
+            reflex_swivel_link_1,
+            reflex_proximal_link_1,
+            reflex_proximal_pad_link_1,
+            reflex_flex_link_1,
+            reflex_distal_link_1,
+            reflex_distal_pad_link_1,
+            reflex_swivel_link_2,
+            reflex_proximal_link_2,
+            reflex_proximal_pad_link_2,
+            reflex_flex_link_2,
+            reflex_distal_link_2,
+            reflex_distal_pad_link_2,
+            reflex_proximal_link_3,
+            reflex_proximal_pad_link_3,
+            reflex_flex_link_3,
+            reflex_distal_link_3,
+            reflex_distal_pad_link_3,
+          ],
+        reflex_pad_link:
+          [
+            reflex_palm_link,
+            reflex_swivel_link_1,
+            reflex_proximal_link_1,
+            reflex_proximal_pad_link_1,
+            reflex_flex_link_1,
+            reflex_distal_link_1,
+            reflex_distal_pad_link_1,
+            reflex_swivel_link_2,
+            reflex_proximal_link_2,
+            reflex_proximal_pad_link_2,
+            reflex_flex_link_2,
+            reflex_distal_link_2,
+            reflex_distal_pad_link_2,
+            reflex_proximal_link_3,
+            reflex_proximal_pad_link_3,
+            reflex_flex_link_3,
+            reflex_distal_link_3,
+            reflex_distal_pad_link_3,
+          ],
+        reflex_palm_link:
+          [
+            reflex_swivel_link_1,
+            reflex_proximal_link_1,
+            reflex_proximal_pad_link_1,
+            reflex_flex_link_1,
+            reflex_distal_link_1,
+            reflex_distal_pad_link_1,
+            reflex_swivel_link_2,
+            reflex_proximal_link_2,
+            reflex_proximal_pad_link_2,
+            reflex_flex_link_2,
+            reflex_distal_link_2,
+            reflex_distal_pad_link_2,
+            reflex_proximal_link_3,
+            reflex_proximal_pad_link_3,
+            reflex_flex_link_3,
+            reflex_distal_link_3,
+            reflex_distal_pad_link_3,
+          ],
+        reflex_swivel_link_1:
+          [
+            reflex_proximal_link_1,
+            reflex_proximal_pad_link_1,
+            reflex_flex_link_1,
+            reflex_distal_link_1,
+            reflex_distal_pad_link_1,
+            reflex_swivel_link_2,
+            reflex_proximal_link_2,
+            reflex_proximal_pad_link_2,
+            reflex_flex_link_2,
+            reflex_distal_link_2,
+            reflex_distal_pad_link_2,
+            reflex_proximal_link_3,
+            reflex_proximal_pad_link_3,
+            reflex_flex_link_3,
+            reflex_distal_link_3,
+            reflex_distal_pad_link_3,
+          ],
+        reflex_proximal_link_1:
+          [
+            reflex_proximal_pad_link_1,
+            reflex_flex_link_1,
+            reflex_distal_link_1,
+            reflex_distal_pad_link_1,
+            reflex_swivel_link_2,
+            reflex_proximal_link_2,
+            reflex_proximal_pad_link_2,
+            reflex_flex_link_2,
+            reflex_distal_link_2,
+            reflex_distal_pad_link_2,
+            reflex_proximal_link_3,
+            reflex_proximal_pad_link_3,
+            reflex_flex_link_3,
+            reflex_distal_link_3,
+            reflex_distal_pad_link_3,
+          ],
+        reflex_proximal_pad_link_1:
+          [
+            reflex_flex_link_1,
+            reflex_distal_link_1,
+            reflex_distal_pad_link_1,
+            reflex_swivel_link_2,
+            reflex_proximal_link_2,
+            reflex_proximal_pad_link_2,
+            reflex_flex_link_2,
+            reflex_distal_link_2,
+            reflex_distal_pad_link_2,
+            reflex_proximal_link_3,
+            reflex_proximal_pad_link_3,
+            reflex_flex_link_3,
+            reflex_distal_link_3,
+            reflex_distal_pad_link_3,
+          ],
+        reflex_flex_link_1:
+          [
+            reflex_distal_link_1,
+            reflex_distal_pad_link_1,
+            reflex_swivel_link_2,
+            reflex_proximal_link_2,
+            reflex_proximal_pad_link_2,
+            reflex_flex_link_2,
+            reflex_distal_link_2,
+            reflex_distal_pad_link_2,
+            reflex_proximal_link_3,
+            reflex_proximal_pad_link_3,
+            reflex_flex_link_3,
+            reflex_distal_link_3,
+            reflex_distal_pad_link_3,
+          ],
+        reflex_distal_link_1:
+          [
+            reflex_distal_pad_link_1,
+            reflex_swivel_link_2,
+            reflex_proximal_link_2,
+            reflex_proximal_pad_link_2,
+            reflex_flex_link_2,
+            reflex_distal_link_2,
+            reflex_distal_pad_link_2,
+            reflex_proximal_link_3,
+            reflex_proximal_pad_link_3,
+            reflex_flex_link_3,
+            reflex_distal_link_3,
+            reflex_distal_pad_link_3,
+          ],
+        reflex_distal_pad_link_1:
+          [
+            reflex_swivel_link_2,
+            reflex_proximal_link_2,
+            reflex_proximal_pad_link_2,
+            reflex_flex_link_2,
+            reflex_distal_link_2,
+            reflex_distal_pad_link_2,
+            reflex_proximal_link_3,
+            reflex_proximal_pad_link_3,
+            reflex_flex_link_3,
+            reflex_distal_link_3,
+            reflex_distal_pad_link_3,
+          ],
+        reflex_swivel_link_2:
+          [
+            reflex_proximal_link_2,
+            reflex_proximal_pad_link_2,
+            reflex_flex_link_2,
+            reflex_distal_link_2,
+            reflex_distal_pad_link_2,
+            reflex_proximal_link_3,
+            reflex_proximal_pad_link_3,
+            reflex_flex_link_3,
+            reflex_distal_link_3,
+            reflex_distal_pad_link_3,
+          ],
+        reflex_proximal_link_2:
+          [
+            reflex_proximal_pad_link_2,
+            reflex_flex_link_2,
+            reflex_distal_link_2,
+            reflex_distal_pad_link_2,
+            reflex_proximal_link_3,
+            reflex_proximal_pad_link_3,
+            reflex_flex_link_3,
+            reflex_distal_link_3,
+            reflex_distal_pad_link_3,
+          ],
+        reflex_proximal_pad_link_2:
+          [
+            reflex_flex_link_2,
+            reflex_distal_link_2,
+            reflex_distal_pad_link_2,
+            reflex_proximal_link_3,
+            reflex_proximal_pad_link_3,
+            reflex_flex_link_3,
+            reflex_distal_link_3,
+            reflex_distal_pad_link_3,
+          ],
+        reflex_flex_link_2:
+          [
+            reflex_distal_link_2,
+            reflex_distal_pad_link_2,
+            reflex_proximal_link_3,
+            reflex_proximal_pad_link_3,
+            reflex_flex_link_3,
+            reflex_distal_link_3,
+            reflex_distal_pad_link_3,
+          ],
+        reflex_distal_link_2:
+          [
+            reflex_distal_pad_link_2,
+            reflex_proximal_link_3,
+            reflex_proximal_pad_link_3,
+            reflex_flex_link_3,
+            reflex_distal_link_3,
+            reflex_distal_pad_link_3,
+          ],
+        reflex_distal_pad_link_2:
+          [
+            reflex_proximal_link_3,
+            reflex_proximal_pad_link_3,
+            reflex_flex_link_3,
+            reflex_distal_link_3,
+            reflex_distal_pad_link_3,
+          ],
+        reflex_proximal_link_3:
+          [
+            reflex_proximal_pad_link_3,
+            reflex_flex_link_3,
+            reflex_distal_link_3,
+            reflex_distal_pad_link_3,
+          ],
+        reflex_proximal_pad_link_3:
+          [
+            reflex_flex_link_3,
+            reflex_distal_link_3,
+            reflex_distal_pad_link_3,
+          ],
+        reflex_flex_link_3:
+          [
+            reflex_distal_link_3,
+            reflex_distal_pad_link_3,
+          ],
+        reflex_distal_link_3: [reflex_distal_pad_link_3],
+      } 
+    self_collision_buffer: 
+      robot_table_link: 0.03
+      iiwa_link_0: 0.0
+      iiwa_link_1: 0.0
+      iiwa_link_2: 0.0
+      iiwa_link_3: 0.0
+      iiwa_link_4: 0.0
+      iiwa_link_5: 0.0
+      iiwa_link_6: 0.0
+      iiwa_link_7: 0.0
+      iiwa_link_ee: 0.0
+      reflex2_to_iiwa_mount: 0.0
+      reflex2_extra_shell: 0.0
+      reflex_shell_link: 0.0
+      reflex_pad_link: 0.0
+      reflex_palm_link: 0.0
+      reflex_swivel_link_1: 0.0
+      reflex_proximal_link_1: 0.0
+      reflex_flex_link_1: 0.0
+      reflex_distal_link_1: 0.0
+      reflex_distal_pad_link_1: 0.0
+      reflex_proximal_pad_link_1: 0.0
+      reflex_swivel_link_2: 0.0
+      reflex_proximal_link_2: 0.0
+      reflex_flex_link_2: 0.0
+      reflex_distal_link_2: 0.0
+      reflex_distal_pad_link_2: 0.0
+      reflex_proximal_pad_link_2: 0.0
+      reflex_proximal_link_3: 0.0
+      reflex_flex_link_3: 0.0
+      reflex_distal_link_3: 0.0
+      reflex_distal_pad_link_3: 0.0
+      reflex_proximal_pad_link_3: 0.0
+
+    use_global_cumul: True
+    mesh_link_names: 
+      - robot_table_link
+      - iiwa_link_0
+      - iiwa_link_1
+      - iiwa_link_2
+      - iiwa_link_3
+      - iiwa_link_4
+      - iiwa_link_5
+      - iiwa_link_6
+      - iiwa_link_7
+      - reflex_shell_link
+      - reflex_pad_link
+      - reflex_swivel_link_1
+      - reflex_proximal_link_1
+      - reflex_proximal_pad_link_1
+      - reflex_flex_link_1
+      - reflex_distal_link_1
+      - reflex_distal_pad_link_1
+      - reflex_swivel_link_2
+      - reflex_proximal_link_2
+      - reflex_proximal_pad_link_2
+      - reflex_flex_link_2
+      - reflex_distal_link_2
+      - reflex_distal_pad_link_2
+      - reflex_proximal_link_3
+      - reflex_proximal_pad_link_3
+      - reflex_flex_link_3
+      - reflex_distal_link_3
+      - reflex_distal_pad_link_3
+      - reflex2_to_iiwa_mount
+      - reflex2_extra_shell
+    external_asset_path: null 
+
+    cspace:
+      joint_names: 
+        [
+          "iiwa_joint_1", 
+          "iiwa_joint_2", 
+          "iiwa_joint_3", 
+          "iiwa_joint_4", 
+          'iiwa_joint_5', 
+          "iiwa_joint_6", 
+          "iiwa_joint_7", 
+          "reflex_preshape_joint_1",
+          "reflex_proximal_joint_1",
+          "reflex_preshape_joint_2",
+          "reflex_proximal_joint_2",
+          "reflex_proximal_joint_3",
+        ] 
+      retract_config: 
+        - 0.0
+        - 0.0
+        - 0.0
+        - 0.0
+        - 0.0
+        - 0.0
+        - 0.0
+        - 0.0
+        - 0.0
+        - 0.0
+        - 0.0
+        - 0.0
+      null_space_weight: 
+        - 1.0
+        - 1.0
+        - 1.0
+        - 1.0
+        - 1.0
+        - 1.0
+        - 1.0
+        - 1.0
+        - 1.0
+        - 1.0
+        - 1.0
+        - 1.0
+      cspace_distance_weight: 
+        - 1.0
+        - 0.9
+        - 0.8
+        - 0.8
+        - 0.7
+        - 0.6
+        - 0.5
+        - 0.1
+        - 0.1
+        - 0.1
+        - 0.1
+        - 0.1
+      max_jerk: 500.0
+      max_acceleration: 15.0

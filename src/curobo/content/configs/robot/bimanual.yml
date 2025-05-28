@@ -1,0 +1,793 @@
+##
+## Copyright (c) 2023 NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+##
+## NVIDIA CORPORATION, its affiliates and licensors retain all intellectual
+## property and proprietary rights in and to this material, related
+## documentation and any modifications thereto. Any use, reproduction,
+## disclosure or distribution of this material and related documentation
+## without an express license agreement from NVIDIA CORPORATION or
+## its affiliates is strictly prohibited.
+##
+
+robot_cfg:
+  kinematics:
+    usd_path: robot/iiwa_allegro_description/configuration/bimanual.usd
+    usd_robot_root: "/robot"
+    isaac_usd_path: robot/iiwa_allegro_description/configuration/bimanual_sim.usd
+    usd_flip_joints: {}
+    usd_flip_joint_limits: []
+
+    urdf_path: robot/iiwa_allegro_description/bimanual_iiwa_robotiq.urdf
+    asset_root_path: robot/iiwa_allegro_description
+    
+    base_link: "world"
+    ee_link: "left_reflex_palm_link"
+    link_names: ["left_reflex_palm_link", "right_robotiq_grasp_frame"]
+    lock_joints: 
+      {
+        "left_reflex_preshape_joint_1": 0.0,
+        "left_reflex_proximal_joint_1": 0.0,
+        "left_reflex_preshape_joint_2": 0.0,
+        "left_reflex_proximal_joint_2": 0.0,
+        "left_reflex_proximal_joint_3": 0.0,
+        "right_robotiq_finger_joint": 0.0,
+      }
+    extra_links: null
+    
+    collision_link_names: 
+      - world
+      - left_iiwa_table
+      - left_iiwa_link_0
+      - left_iiwa_link_1
+      - left_iiwa_link_2
+      - left_iiwa_link_3
+      - left_iiwa_link_4
+      - left_iiwa_link_5
+      - left_iiwa_link_6
+      - left_iiwa_link_7
+      - left_iiwa_link_ee
+      - left_reflex_shell_link
+      - left_reflex_pad_link
+      - left_reflex_palm_link
+      - left_reflex_swivel_link_1
+      - left_reflex_proximal_link_1
+      - left_reflex_proximal_pad_link_1
+      - left_reflex_flex_link_1
+      - left_reflex_distal_link_1
+      - left_reflex_distal_pad_link_1
+      - left_reflex_swivel_link_2
+      - left_reflex_proximal_link_2
+      - left_reflex_proximal_pad_link_2
+      - left_reflex_flex_link_2
+      - left_reflex_distal_link_2
+      - left_reflex_distal_pad_link_2
+      - left_reflex_proximal_link_3
+      - left_reflex_proximal_pad_link_3
+      - left_reflex_flex_link_3
+      - left_reflex_distal_link_3
+      - left_reflex_distal_pad_link_3
+      - left_reflex_reflex2_to_iiwa_mount
+      - left_reflex_reflex2_extra_shell
+      - right_iiwa_table
+      - right_iiwa_link_0
+      - right_iiwa_link_1
+      - right_iiwa_link_2
+      - right_iiwa_link_3
+      - right_iiwa_link_4
+      - right_iiwa_link_5
+      - right_iiwa_link_6
+      - right_iiwa_link_7
+      - right_robotiq_base_link
+      - right_robotiq_left_outer_knuckle
+      - right_robotiq_left_outer_finger
+      - right_robotiq_left_inner_finger
+      - right_robotiq_left_inner_finger_pad
+      - right_robotiq_left_inner_knuckle
+      - right_robotiq_right_outer_knuckle
+      - right_robotiq_right_outer_finger
+      - right_robotiq_right_inner_finger
+      - right_robotiq_right_inner_finger_pad
+      - right_robotiq_right_inner_knuckle
+
+
+    collision_spheres: spheres/bimanual.yml 
+    collision_sphere_buffer: 0.005 
+    extra_collision_spheres: {}
+    self_collision_ignore: 
+      {
+        world: [left_iiwa_table, right_iiwa_table],
+        left_iiwa_table: [left_iiwa_link_0],
+        left_iiwa_link_0: [left_iiwa_link_1, left_iiwa_link_2],
+        left_iiwa_link_1: [left_iiwa_link_2, left_iiwa_link_3],
+        left_iiwa_link_2: [left_iiwa_link_3, left_iiwa_link_4],
+        left_iiwa_link_3: [left_iiwa_link_4, left_iiwa_link_5],
+        left_iiwa_link_4: [left_iiwa_link_5, left_iiwa_link_6],
+        left_iiwa_link_5: [left_iiwa_link_6, left_iiwa_link_7],
+        left_iiwa_link_6: 
+          [
+            left_iiwa_link_7, 
+            left_iiwa_link_ee,
+            left_reflex_reflex2_to_iiwa_mount, 
+            left_reflex_reflex2_extra_shell, 
+            left_reflex_shell_link,
+            left_reflex_pad_link,
+            left_reflex_palm_link,
+          ],
+        left_iiwa_link_7: 
+          [
+            left_iiwa_link_ee, 
+            left_reflex_reflex2_to_iiwa_mount, 
+            left_reflex_reflex2_extra_shell, 
+            left_reflex_shell_link,
+            left_reflex_pad_link,
+            left_reflex_palm_link,
+            left_reflex_swivel_link_1,
+            left_reflex_proximal_link_1,
+            left_reflex_proximal_pad_link_1,
+            left_reflex_flex_link_1,
+            left_reflex_distal_link_1,
+            left_reflex_distal_pad_link_1,
+            left_reflex_swivel_link_2,
+            left_reflex_proximal_link_2,
+            left_reflex_proximal_pad_link_2,
+            left_reflex_flex_link_2,
+            left_reflex_distal_link_2,
+            left_reflex_distal_pad_link_2,
+            left_reflex_proximal_link_3,
+            left_reflex_proximal_pad_link_3,
+            left_reflex_flex_link_3,
+            left_reflex_distal_link_3,
+            left_reflex_distal_pad_link_3,
+          ],
+        left_iiwa_link_ee: 
+          [
+            left_reflex_reflex2_to_iiwa_mount, 
+            left_reflex_reflex2_extra_shell, 
+            left_reflex_shell_link,
+            left_reflex_pad_link,
+            left_reflex_palm_link,
+            left_reflex_swivel_link_1,
+            left_reflex_proximal_link_1,
+            left_reflex_proximal_pad_link_1,
+            left_reflex_flex_link_1,
+            left_reflex_distal_link_1,
+            left_reflex_distal_pad_link_1,
+            left_reflex_swivel_link_2,
+            left_reflex_proximal_link_2,
+            left_reflex_proximal_pad_link_2,
+            left_reflex_flex_link_2,
+            left_reflex_distal_link_2,
+            left_reflex_distal_pad_link_2,
+            left_reflex_proximal_link_3,
+            left_reflex_proximal_pad_link_3,
+            left_reflex_flex_link_3,
+            left_reflex_distal_link_3,
+            left_reflex_distal_pad_link_3,
+          ],
+        left_reflex_reflex2_to_iiwa_mount: 
+          [
+            left_reflex_reflex2_extra_shell, 
+            left_reflex_shell_link,
+            left_reflex_pad_link,
+            left_reflex_palm_link,
+            left_reflex_swivel_link_1,
+            left_reflex_proximal_link_1,
+            left_reflex_proximal_pad_link_1,
+            left_reflex_flex_link_1,
+            left_reflex_distal_link_1,
+            left_reflex_distal_pad_link_1,
+            left_reflex_swivel_link_2,
+            left_reflex_proximal_link_2,
+            left_reflex_proximal_pad_link_2,
+            left_reflex_flex_link_2,
+            left_reflex_distal_link_2,
+            left_reflex_distal_pad_link_2,
+            left_reflex_proximal_link_3,
+            left_reflex_proximal_pad_link_3,
+            left_reflex_flex_link_3,
+            left_reflex_distal_link_3,
+            left_reflex_distal_pad_link_3,
+          ],
+        left_reflex_reflex2_extra_shell: 
+          [
+            left_reflex_shell_link,
+            left_reflex_pad_link,
+            left_reflex_palm_link,
+            left_reflex_swivel_link_1,
+            left_reflex_proximal_link_1,
+            left_reflex_proximal_pad_link_1,
+            left_reflex_flex_link_1,
+            left_reflex_distal_link_1,
+            left_reflex_distal_pad_link_1,
+            left_reflex_swivel_link_2,
+            left_reflex_proximal_link_2,
+            left_reflex_proximal_pad_link_2,
+            left_reflex_flex_link_2,
+            left_reflex_distal_link_2,
+            left_reflex_distal_pad_link_2,
+            left_reflex_proximal_link_3,
+            left_reflex_proximal_pad_link_3,
+            left_reflex_flex_link_3,
+            left_reflex_distal_link_3,
+            left_reflex_distal_pad_link_3,
+          ],
+        left_reflex_shell_link: 
+          [
+            left_reflex_pad_link,
+            left_reflex_palm_link,
+            left_reflex_swivel_link_1,
+            left_reflex_proximal_link_1,
+            left_reflex_proximal_pad_link_1,
+            left_reflex_flex_link_1,
+            left_reflex_distal_link_1,
+            left_reflex_distal_pad_link_1,
+            left_reflex_swivel_link_2,
+            left_reflex_proximal_link_2,
+            left_reflex_proximal_pad_link_2,
+            left_reflex_flex_link_2,
+            left_reflex_distal_link_2,
+            left_reflex_distal_pad_link_2,
+            left_reflex_proximal_link_3,
+            left_reflex_proximal_pad_link_3,
+            left_reflex_flex_link_3,
+            left_reflex_distal_link_3,
+            left_reflex_distal_pad_link_3,
+          ],
+        left_reflex_pad_link:   
+          [
+            left_reflex_palm_link,
+            left_reflex_swivel_link_1,
+            left_reflex_proximal_link_1,
+            left_reflex_proximal_pad_link_1,
+            left_reflex_flex_link_1,
+            left_reflex_distal_link_1,
+            left_reflex_distal_pad_link_1,
+            left_reflex_swivel_link_2,
+            left_reflex_proximal_link_2,
+            left_reflex_proximal_pad_link_2,
+            left_reflex_flex_link_2,
+            left_reflex_distal_link_2,
+            left_reflex_distal_pad_link_2,
+            left_reflex_proximal_link_3,
+            left_reflex_proximal_pad_link_3,
+            left_reflex_flex_link_3,
+            left_reflex_distal_link_3,
+            left_reflex_distal_pad_link_3,
+          ],
+        left_reflex_palm_link:  
+          [
+            left_reflex_swivel_link_1,
+            left_reflex_proximal_link_1,
+            left_reflex_proximal_pad_link_1,
+            left_reflex_flex_link_1,
+            left_reflex_distal_link_1,
+            left_reflex_distal_pad_link_1,
+            left_reflex_swivel_link_2,
+            left_reflex_proximal_link_2,
+            left_reflex_proximal_pad_link_2,
+            left_reflex_flex_link_2,
+            left_reflex_distal_link_2,
+            left_reflex_distal_pad_link_2,
+            left_reflex_proximal_link_3,
+            left_reflex_proximal_pad_link_3,
+            left_reflex_flex_link_3,
+            left_reflex_distal_link_3,
+            left_reflex_distal_pad_link_3,
+          ],
+        left_reflex_swivel_link_1: 
+          [
+            left_reflex_proximal_link_1,
+            left_reflex_proximal_pad_link_1,
+            left_reflex_flex_link_1,
+            left_reflex_distal_link_1,
+            left_reflex_distal_pad_link_1,
+            left_reflex_swivel_link_2,
+            left_reflex_proximal_link_2,  
+            left_reflex_proximal_pad_link_2,
+            left_reflex_flex_link_2,
+            left_reflex_distal_link_2,
+            left_reflex_distal_pad_link_2,
+            left_reflex_proximal_link_3,
+            left_reflex_proximal_pad_link_3,
+            left_reflex_flex_link_3,
+            left_reflex_distal_link_3,
+            left_reflex_distal_pad_link_3,
+          ],
+        left_reflex_proximal_link_1: 
+          [
+            left_reflex_proximal_pad_link_1,
+            left_reflex_flex_link_1,
+            left_reflex_distal_link_1,
+            left_reflex_distal_pad_link_1,
+            left_reflex_swivel_link_2,
+            left_reflex_proximal_link_2,  
+            left_reflex_proximal_pad_link_2,
+            left_reflex_flex_link_2,
+            left_reflex_distal_link_2,
+            left_reflex_distal_pad_link_2,
+            left_reflex_proximal_link_3,
+            left_reflex_proximal_pad_link_3,
+            left_reflex_flex_link_3,
+            left_reflex_distal_link_3,
+            left_reflex_distal_pad_link_3,
+          ],
+        left_reflex_proximal_pad_link_1: 
+          [
+            left_reflex_flex_link_1,
+            left_reflex_distal_link_1,
+            left_reflex_distal_pad_link_1,
+            left_reflex_swivel_link_2,
+            left_reflex_proximal_link_2,  
+            left_reflex_proximal_pad_link_2,
+            left_reflex_flex_link_2,
+            left_reflex_distal_link_2,
+            left_reflex_distal_pad_link_2,
+            left_reflex_proximal_link_3,
+            left_reflex_proximal_pad_link_3,
+            left_reflex_flex_link_3,
+            left_reflex_distal_link_3,
+            left_reflex_distal_pad_link_3,
+          ],
+        left_reflex_flex_link_1: 
+          [
+            left_reflex_distal_link_1,
+            left_reflex_distal_pad_link_1,
+            left_reflex_swivel_link_2,
+            left_reflex_proximal_link_2,  
+            left_reflex_proximal_pad_link_2,
+            left_reflex_flex_link_2,
+            left_reflex_distal_link_2,
+            left_reflex_distal_pad_link_2,
+            left_reflex_proximal_link_3,
+            left_reflex_proximal_pad_link_3,
+            left_reflex_flex_link_3,
+            left_reflex_distal_link_3,
+            left_reflex_distal_pad_link_3,
+          ],
+        left_reflex_distal_link_1: 
+          [
+            left_reflex_distal_pad_link_1,
+            left_reflex_swivel_link_2,
+            left_reflex_proximal_link_2,  
+            left_reflex_proximal_pad_link_2,
+            left_reflex_flex_link_2,
+            left_reflex_distal_link_2,
+            left_reflex_distal_pad_link_2,
+            left_reflex_proximal_link_3,
+            left_reflex_proximal_pad_link_3,
+            left_reflex_flex_link_3,
+            left_reflex_distal_link_3,
+            left_reflex_distal_pad_link_3,
+          ],
+        left_reflex_distal_pad_link_1: 
+          [
+            left_reflex_swivel_link_2,
+            left_reflex_proximal_link_2,  
+            left_reflex_proximal_pad_link_2,
+            left_reflex_flex_link_2,
+            left_reflex_distal_link_2,
+            left_reflex_distal_pad_link_2,
+            left_reflex_proximal_link_3,
+            left_reflex_proximal_pad_link_3,
+            left_reflex_flex_link_3,
+            left_reflex_distal_link_3,
+            left_reflex_distal_pad_link_3,
+          ],
+        left_reflex_swivel_link_2: 
+          [
+            left_reflex_proximal_link_2,  
+            left_reflex_proximal_pad_link_2,
+            left_reflex_flex_link_2,
+            left_reflex_distal_link_2,
+            left_reflex_distal_pad_link_2,
+            left_reflex_proximal_link_3,
+            left_reflex_proximal_pad_link_3,
+            left_reflex_flex_link_3,
+            left_reflex_distal_link_3,
+            left_reflex_distal_pad_link_3,
+          ],
+        left_reflex_proximal_link_2: 
+          [
+            left_reflex_proximal_pad_link_2,
+            left_reflex_flex_link_2,
+            left_reflex_distal_link_2,
+            left_reflex_distal_pad_link_2,
+            left_reflex_proximal_link_3,
+            left_reflex_proximal_pad_link_3,
+            left_reflex_flex_link_3,
+            left_reflex_distal_link_3,
+            left_reflex_distal_pad_link_3,
+          ],
+        left_reflex_proximal_pad_link_2: 
+          [
+            left_reflex_flex_link_2,
+            left_reflex_distal_link_2,
+            left_reflex_distal_pad_link_2,
+            left_reflex_proximal_link_3,
+            left_reflex_proximal_pad_link_3,
+            left_reflex_flex_link_3,
+            left_reflex_distal_link_3,
+            left_reflex_distal_pad_link_3,
+          ],
+        left_reflex_flex_link_2: 
+          [
+            left_reflex_distal_link_2,
+            left_reflex_distal_pad_link_2,
+            left_reflex_proximal_link_3,
+            left_reflex_proximal_pad_link_3,
+            left_reflex_flex_link_3,
+            left_reflex_distal_link_3,
+            left_reflex_distal_pad_link_3,
+          ],
+        left_reflex_distal_link_2: 
+          [
+            left_reflex_distal_pad_link_2,
+            left_reflex_proximal_link_3,
+            left_reflex_proximal_pad_link_3,
+            left_reflex_flex_link_3,
+            left_reflex_distal_link_3,
+            left_reflex_distal_pad_link_3,
+          ],
+        left_reflex_distal_pad_link_2: 
+          [
+            left_reflex_proximal_link_3,
+            left_reflex_proximal_pad_link_3,
+            left_reflex_flex_link_3,
+            left_reflex_distal_link_3,
+            left_reflex_distal_pad_link_3,
+          ],
+        left_reflex_proximal_link_3: 
+          [
+            left_reflex_proximal_pad_link_3,
+            left_reflex_flex_link_3,
+            left_reflex_distal_link_3,
+            left_reflex_distal_pad_link_3,
+          ],
+        left_reflex_proximal_pad_link_3: 
+          [
+            left_reflex_flex_link_3,
+            left_reflex_distal_link_3,
+            left_reflex_distal_pad_link_3,
+          ],
+        left_reflex_flex_link_3: 
+          [
+            left_reflex_distal_link_3,
+            left_reflex_distal_pad_link_3,
+          ],
+        left_reflex_distal_link_3: 
+          [
+            left_reflex_distal_pad_link_3,
+          ],
+        right_iiwa_table: [right_iiwa_link_0],
+        right_iiwa_link_0: [right_iiwa_link_1, right_iiwa_link_2],
+        right_iiwa_link_1: [right_iiwa_link_2, right_iiwa_link_3],
+        right_iiwa_link_2: [right_iiwa_link_3, right_iiwa_link_4],
+        right_iiwa_link_3: [right_iiwa_link_4, right_iiwa_link_5],
+        right_iiwa_link_4: [right_iiwa_link_5, right_iiwa_link_6],
+        right_iiwa_link_5: [right_iiwa_link_6, right_iiwa_link_7],
+        right_iiwa_link_6: 
+          [
+            right_iiwa_link_7, 
+            right_robotiq_to_iiwa_mount,
+            right_robotiq_base_link,
+            right_robotiq_palm_link,
+          ],
+        right_iiwa_link_7: 
+          [
+            right_robotiq_to_iiwa_mount,
+            right_robotiq_base_link, 
+            right_robotiq_palm_link, 
+            right_robotiq_left_outer_knuckle,
+            right_robotiq_left_outer_finger,
+            right_robotiq_left_inner_finger,
+            right_robotiq_left_inner_finger_pad,
+            right_robotiq_left_inner_knuckle,
+            right_robotiq_right_outer_knuckle,
+            right_robotiq_right_outer_finger,
+            right_robotiq_right_inner_finger,
+            right_robotiq_right_inner_finger_pad,
+            right_robotiq_right_inner_knuckle,
+          ],
+        right_robotiq_to_iiwa_mount: 
+          [
+            right_robotiq_base_link, 
+            right_robotiq_palm_link, 
+            right_robotiq_left_outer_knuckle,
+            right_robotiq_left_outer_finger,
+            right_robotiq_left_inner_finger,
+            right_robotiq_left_inner_finger_pad,
+            right_robotiq_left_inner_knuckle,
+            right_robotiq_right_outer_knuckle,
+            right_robotiq_right_outer_finger,
+            right_robotiq_right_inner_finger,
+            right_robotiq_right_inner_finger_pad,
+            right_robotiq_right_inner_knuckle,
+          ],
+        right_robotiq_base_link: 
+          [
+            right_robotiq_palm_link,
+            right_robotiq_left_outer_knuckle,
+            right_robotiq_left_outer_finger,
+            right_robotiq_left_inner_finger,
+            right_robotiq_left_inner_finger_pad,
+            right_robotiq_left_inner_knuckle,
+            right_robotiq_right_outer_knuckle,
+            right_robotiq_right_outer_finger,
+            right_robotiq_right_inner_finger,
+            right_robotiq_right_inner_finger_pad,
+            right_robotiq_right_inner_knuckle,
+          ],
+        right_robotiq_palm_link: 
+          [
+            right_robotiq_left_outer_knuckle,
+            right_robotiq_left_outer_finger,
+            right_robotiq_left_inner_finger,
+            right_robotiq_left_inner_finger_pad,
+            right_robotiq_left_inner_knuckle,
+            right_robotiq_right_outer_knuckle,
+            right_robotiq_right_outer_finger,
+            right_robotiq_right_inner_finger,
+            right_robotiq_right_inner_finger_pad,
+            right_robotiq_right_inner_knuckle,
+          ],
+        right_robotiq_left_outer_knuckle: 
+          [
+            right_robotiq_left_outer_finger,
+            right_robotiq_left_inner_finger,
+            right_robotiq_left_inner_finger_pad,
+            right_robotiq_left_inner_knuckle,
+            right_robotiq_right_outer_knuckle,
+            right_robotiq_right_outer_finger,
+            right_robotiq_right_inner_finger,
+            right_robotiq_right_inner_finger_pad,
+            right_robotiq_right_inner_knuckle,
+          ],
+        right_robotiq_left_outer_finger: 
+          [
+            right_robotiq_left_inner_finger,
+            right_robotiq_left_inner_finger_pad,
+            right_robotiq_left_inner_knuckle,
+            right_robotiq_right_outer_knuckle,
+            right_robotiq_right_outer_finger,
+            right_robotiq_right_inner_finger,
+            right_robotiq_right_inner_finger_pad,
+            right_robotiq_right_inner_knuckle,
+          ],
+        right_robotiq_left_inner_finger: 
+          [
+            right_robotiq_left_inner_finger_pad,
+            right_robotiq_left_inner_knuckle,
+            right_robotiq_right_outer_knuckle,
+            right_robotiq_right_outer_finger,
+            right_robotiq_right_inner_finger,
+            right_robotiq_right_inner_finger_pad,
+            right_robotiq_right_inner_knuckle,
+          ],
+        right_robotiq_left_inner_finger_pad: 
+          [
+            right_robotiq_left_inner_knuckle,
+            right_robotiq_right_outer_knuckle,
+            right_robotiq_right_outer_finger,
+            right_robotiq_right_inner_finger,
+            right_robotiq_right_inner_finger_pad,
+            right_robotiq_right_inner_knuckle,
+          ],
+        right_robotiq_left_inner_knuckle: 
+          [
+            right_robotiq_right_outer_knuckle,
+            right_robotiq_right_outer_finger,
+            right_robotiq_right_inner_finger,
+            right_robotiq_right_inner_finger_pad,
+            right_robotiq_right_inner_knuckle,
+          ],
+        right_robotiq_right_outer_knuckle: 
+          [
+            right_robotiq_right_outer_finger,
+            right_robotiq_right_inner_finger,
+            right_robotiq_right_inner_finger_pad,
+            right_robotiq_right_inner_knuckle,
+          ],
+        right_robotiq_right_outer_finger: 
+          [
+            right_robotiq_right_inner_finger,
+            right_robotiq_right_inner_finger_pad,
+            right_robotiq_right_inner_knuckle,
+          ],
+        right_robotiq_right_inner_finger: 
+          [
+            right_robotiq_right_inner_finger_pad,
+            right_robotiq_right_inner_knuckle,
+          ],
+        right_robotiq_right_inner_finger_pad: [right_robotiq_right_inner_knuckle],
+      } 
+    self_collision_buffer: 
+      left_iiwa_table: 0.0
+      left_iiwa_link_0: 0.0
+      left_iiwa_link_1: 0.0
+      left_iiwa_link_2: 0.0
+      left_iiwa_link_3: 0.0
+      left_iiwa_link_4: 0.0
+      left_iiwa_link_5: 0.0
+      left_iiwa_link_6: 0.0
+      left_iiwa_link_7: 0.0
+      left_reflex_shell_link: 0.0
+      left_reflex_pad_link: 0.0
+      left_reflex_swivel_link_1: 0.0
+      left_reflex_proximal_link_1: 0.0
+      left_reflex_proximal_pad_link_1: 0.0
+      left_reflex_flex_link_1: 0.0
+      left_reflex_distal_link_1: 0.0
+      left_reflex_distal_pad_link_1: 0.0
+      left_reflex_swivel_link_2: 0.0
+      left_reflex_proximal_link_2: 0.0
+      left_reflex_proximal_pad_link_2: 0.0
+      left_reflex_flex_link_2: 0.0
+      left_reflex_distal_link_2: 0.0
+      left_reflex_distal_pad_link_2: 0.0
+      left_reflex_proximal_link_3: 0.0
+      left_reflex_proximal_pad_link_3: 0.0
+      left_reflex_flex_link_3: 0.0
+      left_reflex_distal_link_3: 0.0
+      left_reflex_distal_pad_link_3: 0.0
+      left_reflex_reflex2_to_iiwa_mount: 0.0
+      left_reflex_reflex2_extra_shell: 0.0
+      right_iiwa_table: 0.0
+      right_iiwa_link_0: 0.0
+      right_iiwa_link_1: 0.0
+      right_iiwa_link_2: 0.0
+      right_iiwa_link_3: 0.0
+      right_iiwa_link_4: 0.0
+      right_iiwa_link_5: 0.0
+      right_iiwa_link_6: 0.0
+      right_iiwa_link_7: 0.0
+      right_robotiq_base_link: 0.0
+      right_robotiq_left_outer_knuckle: 0.0
+      right_robotiq_left_outer_finger: 0.0
+      right_robotiq_left_inner_finger: 0.0
+      right_robotiq_left_inner_knuckle: 0.0
+      right_robotiq_right_outer_knuckle: 0.0
+      right_robotiq_right_outer_finger: 0.0
+      right_robotiq_right_inner_finger: 0.0
+      right_robotiq_right_inner_knuckle: 0.0
+
+    use_global_cumul: True
+    mesh_link_names: 
+      - left_iiwa_table
+      - left_iiwa_link_0
+      - left_iiwa_link_1
+      - left_iiwa_link_2
+      - left_iiwa_link_3
+      - left_iiwa_link_4
+      - left_iiwa_link_5
+      - left_iiwa_link_6
+      - left_iiwa_link_7
+      - left_reflex_shell_link
+      - left_reflex_pad_link
+      - left_reflex_swivel_link_1
+      - left_reflex_proximal_link_1
+      - left_reflex_proximal_pad_link_1
+      - left_reflex_flex_link_1
+      - left_reflex_distal_link_1
+      - left_reflex_distal_pad_link_1
+      - left_reflex_swivel_link_2
+      - left_reflex_proximal_link_2
+      - left_reflex_proximal_pad_link_2
+      - left_reflex_flex_link_2
+      - left_reflex_distal_link_2
+      - left_reflex_distal_pad_link_2
+      - left_reflex_proximal_link_3
+      - left_reflex_proximal_pad_link_3
+      - left_reflex_flex_link_3
+      - left_reflex_distal_link_3
+      - left_reflex_distal_pad_link_3
+      - left_reflex_reflex2_to_iiwa_mount
+      - left_reflex_reflex2_extra_shell
+      - right_iiwa_table
+      - right_iiwa_link_0
+      - right_iiwa_link_1
+      - right_iiwa_link_2
+      - right_iiwa_link_3
+      - right_iiwa_link_4
+      - right_iiwa_link_5
+      - right_iiwa_link_6
+      - right_iiwa_link_7
+      - right_robotiq_base_link
+      - right_robotiq_left_outer_knuckle
+      - right_robotiq_left_outer_finger
+      - right_robotiq_left_inner_finger
+      - right_robotiq_left_inner_knuckle
+      - right_robotiq_right_outer_knuckle
+      - right_robotiq_right_outer_finger
+      - right_robotiq_right_inner_finger
+      - right_robotiq_right_inner_knuckle
+    external_asset_path: null 
+
+    cspace:
+      joint_names: 
+        [
+          "left_iiwa_joint_1", 
+          "left_iiwa_joint_2", 
+          "left_iiwa_joint_3", 
+          "left_iiwa_joint_4", 
+          'left_iiwa_joint_5', 
+          "left_iiwa_joint_6", 
+          "left_iiwa_joint_7", 
+          "left_reflex_preshape_joint_1",
+          "left_reflex_proximal_joint_1",
+          "left_reflex_preshape_joint_2",
+          "left_reflex_proximal_joint_2",
+          "left_reflex_proximal_joint_3",
+          "right_iiwa_joint_1", 
+          "right_iiwa_joint_2", 
+          "right_iiwa_joint_3", 
+          "right_iiwa_joint_4", 
+          'right_iiwa_joint_5', 
+          "right_iiwa_joint_6", 
+          "right_iiwa_joint_7", 
+          "right_robotiq_finger_joint",
+        ] 
+      retract_config: 
+        - 0.0
+        - 0.0
+        - 0.0
+        - 0.0
+        - 0.0
+        - 0.0
+        - 0.0
+        - 0.0
+        - 0.0
+        - 0.0
+        - 0.0
+        - 0.0
+        - 0.0
+        - 0.0
+        - 0.0
+        - 0.0
+        - 0.0
+        - 0.0
+        - 0.0
+        - 0.0
+      null_space_weight: 
+        - 1.0
+        - 1.0
+        - 1.0
+        - 1.0
+        - 1.0
+        - 1.0
+        - 1.0
+        - 1.0
+        - 1.0
+        - 1.0
+        - 1.0
+        - 1.0
+        - 1.0
+        - 1.0
+        - 1.0
+        - 1.0
+        - 1.0
+        - 1.0
+        - 1.0
+        - 1.0
+      cspace_distance_weight: 
+        - 1.0
+        - 0.9
+        - 0.8
+        - 0.8
+        - 0.7
+        - 0.6
+        - 0.5
+        - 0.1
+        - 0.1
+        - 0.1
+        - 0.1
+        - 0.1
+        - 1.0
+        - 0.9
+        - 0.8
+        - 0.8
+        - 0.7
+        - 0.6
+        - 0.5
+        - 0.1
+      max_jerk: 500.0
+      max_acceleration: 15.0

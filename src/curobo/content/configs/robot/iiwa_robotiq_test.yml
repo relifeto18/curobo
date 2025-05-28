@@ -1,0 +1,295 @@
+##
+## Copyright (c) 2023 NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+##
+## NVIDIA CORPORATION, its affiliates and licensors retain all intellectual
+## property and proprietary rights in and to this material, related
+## documentation and any modifications thereto. Any use, reproduction,
+## disclosure or distribution of this material and related documentation
+## without an express license agreement from NVIDIA CORPORATION or
+## its affiliates is strictly prohibited.
+##
+
+robot_cfg:
+  kinematics:
+    usd_path: robot/iiwa_allegro_description/configuration/iiwa_robotiq_test.usd
+    usd_robot_root: "/robot"
+    isaac_usd_path: robot/iiwa_allegro_description/configuration/iiwa_robotiq_sim.usd
+    usd_flip_joints: {}
+    usd_flip_joint_limits: []
+
+    urdf_path: robot/iiwa_allegro_description/iiwa_robotiq_test.urdf
+    asset_root_path: robot/iiwa_allegro_description
+    
+    base_link: "world"
+    ee_link: "grasp_frame"
+    link_names: null
+    lock_joints: {"finger_joint": 0.0}
+    extra_links: null
+
+    
+    collision_link_names: 
+      - world
+      - robot_table_link
+      - iiwa_link_0
+      - iiwa_link_1
+      - iiwa_link_2
+      - iiwa_link_3
+      - iiwa_link_4
+      - iiwa_link_5
+      - iiwa_link_6
+      - iiwa_link_7
+      - tool0
+      - robotiq_arg2f_base_link
+      - left_outer_knuckle
+      - left_inner_knuckle
+      - left_outer_finger
+      - left_inner_finger
+      - left_inner_finger_pad
+      - right_outer_knuckle
+      - right_inner_knuckle
+      - right_outer_finger
+      - right_inner_finger
+      - right_inner_finger_pad
+    collision_spheres: spheres/iiwa_robotiq_test.yml 
+    collision_sphere_buffer: 0.005 
+    extra_collision_spheres: {}
+    self_collision_ignore: 
+      {
+        world: [robot_table_link, iiwa_link_0],
+        robot_table_link: [iiwa_link_0],
+        iiwa_link_0: [iiwa_link_1, iiwa_link_2],
+        iiwa_link_1: [iiwa_link_2, iiwa_link_3],
+        iiwa_link_2: [iiwa_link_3, iiwa_link_4],
+        iiwa_link_3: [iiwa_link_4, iiwa_link_5],
+        iiwa_link_4: [iiwa_link_5, iiwa_link_6],
+        iiwa_link_5: [iiwa_link_6, iiwa_link_7],
+        iiwa_link_6: 
+          [ 
+            iiwa_link_7,
+            tool0,
+            robotiq_arg2f_base_link,
+            left_outer_knuckle,
+            left_outer_finger,
+            left_inner_finger,
+            left_inner_finger_pad,
+            left_inner_knuckle,
+            right_inner_knuckle,
+            right_outer_knuckle,
+            right_outer_finger,
+            right_inner_finger,
+            right_inner_finger_pad,
+          ],
+        iiwa_link_7: 
+          [ 
+            tool0,
+            robotiq_arg2f_base_link,
+            left_outer_knuckle,
+            left_outer_finger,
+            left_inner_finger,
+            left_inner_finger_pad,
+            left_inner_knuckle,
+            right_inner_knuckle,
+            right_outer_knuckle,
+            right_outer_finger,
+            right_inner_finger,
+            right_inner_finger_pad,
+          ],
+        flange: 
+          [ 
+            tool0,
+            robotiq_arg2f_base_link,
+            left_outer_knuckle,
+            left_outer_finger,
+            left_inner_finger,
+            left_inner_finger_pad,
+            left_inner_knuckle,
+            right_inner_knuckle,
+            right_outer_knuckle,
+            right_outer_finger,
+            right_inner_finger,
+            right_inner_finger_pad,
+          ],
+        tool0: 
+          [
+            robotiq_arg2f_base_link,
+            left_outer_knuckle,
+            left_outer_finger,
+            left_inner_finger,
+            left_inner_finger_pad,
+            left_inner_knuckle,
+            right_inner_knuckle,
+            right_outer_knuckle,
+            right_outer_finger,
+            right_inner_finger,
+            right_inner_finger_pad,
+          ],
+        robotiq_arg2f_base_link: 
+          [
+            left_outer_knuckle,
+            left_outer_finger,
+            left_inner_finger,
+            left_inner_finger_pad,
+            left_inner_knuckle,
+            right_inner_knuckle,
+            right_outer_knuckle,
+            right_outer_finger,
+            right_inner_finger,
+            right_inner_finger_pad,
+          ],
+        left_outer_knuckle: 
+          [
+            left_outer_finger,
+            left_inner_finger,
+            left_inner_finger_pad,
+            left_inner_knuckle,
+            right_inner_knuckle,
+            right_outer_knuckle,
+            right_outer_finger,
+            right_inner_finger,
+            right_inner_finger_pad,
+          ],
+        left_outer_finger: 
+          [
+            left_inner_finger,
+            left_inner_finger_pad,
+            left_inner_knuckle,
+            right_inner_knuckle,
+            right_outer_knuckle,
+            right_outer_finger,
+            right_inner_finger,
+            right_inner_finger_pad,
+          ],
+        left_inner_finger: 
+          [
+            left_inner_finger_pad,
+            left_inner_knuckle,
+            right_inner_knuckle,
+            right_outer_knuckle,
+            right_outer_finger,
+            right_inner_finger,
+            right_inner_finger_pad,
+          ],
+        left_inner_finger_pad: 
+          [
+            left_inner_knuckle,
+            right_inner_knuckle,
+            right_outer_knuckle,
+            right_outer_finger,
+            right_inner_finger,
+            right_inner_finger_pad,
+          ],
+        left_inner_knuckle:
+          [
+            right_inner_knuckle,
+            right_outer_knuckle,
+            right_outer_finger,
+            right_inner_finger,
+            right_inner_finger_pad,
+          ],
+        right_inner_knuckle:
+          [
+            right_outer_knuckle,
+            right_outer_finger,
+            right_inner_finger,
+            right_inner_finger_pad,
+          ],
+        right_outer_knuckle:
+          [
+            right_outer_finger,
+            right_inner_finger,
+            right_inner_finger_pad,
+          ],
+        right_outer_finger:
+          [
+            right_inner_finger,
+            right_inner_finger_pad,
+          ],
+        right_inner_finger: [right_inner_finger_pad],
+      } 
+    self_collision_buffer: 
+      world: 0.0
+      robot_table_link: 0.01
+      iiwa_link_0: 0.0
+      iiwa_link_1: 0.0
+      iiwa_link_2: 0.0
+      iiwa_link_3: 0.0
+      iiwa_link_4: 0.0
+      iiwa_link_5: 0.0
+      iiwa_link_6: 0.0
+      iiwa_link_7: 0.0
+      tool0: 0.02
+      robotiq_arg2f_base_link: 0.0
+      left_outer_knuckle: 0.0
+      left_inner_knuckle: 0.0
+      left_outer_finger: 0.0
+      left_inner_finger: 0.0
+      left_inner_finger_pad: 0.0
+      right_outer_knuckle: 0.0
+      right_inner_knuckle: 0.0
+      right_outer_finger: 0.0
+      right_inner_finger: 0.0
+      right_inner_finger_pad: 0.0
+
+    use_global_cumul: True
+    mesh_link_names: 
+      - robot_table_link
+      - iiwa_link_0
+      - iiwa_link_1
+      - iiwa_link_2
+      - iiwa_link_3
+      - iiwa_link_4
+      - iiwa_link_5
+      - iiwa_link_6
+      - iiwa_link_7
+      - robotiq_arg2f_base_link
+      - left_outer_knuckle
+      - left_outer_finger
+      - left_inner_finger
+      - left_inner_knuckle
+      - right_inner_knuckle
+      - right_outer_knuckle
+      - right_outer_finger
+      - right_inner_finger
+    external_asset_path: null 
+
+    cspace:
+      joint_names: 
+        [
+          "iiwa_joint_1", 
+          "iiwa_joint_2", 
+          "iiwa_joint_3", 
+          "iiwa_joint_4", 
+          'iiwa_joint_5', 
+          "iiwa_joint_6", 
+          "iiwa_joint_7", 
+          "finger_joint",
+        ] 
+      retract_config: 
+        - 0.0
+        - 0.0
+        - 0.0
+        - 0.0
+        - 0.0
+        - 0.0
+        - 0.0
+        - 0.0
+      null_space_weight: 
+        - 1.0
+        - 1.0
+        - 1.0
+        - 1.0
+        - 1.0
+        - 1.0
+        - 1.0
+        - 1.0
+      cspace_distance_weight: 
+        - 1.0
+        - 0.9
+        - 0.8
+        - 0.8
+        - 0.7
+        - 0.6
+        - 0.5
+        - 1.0
+      max_jerk: 500.0
+      max_acceleration: 15.0

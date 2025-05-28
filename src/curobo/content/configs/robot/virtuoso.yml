@@ -1,0 +1,116 @@
+##
+## Copyright (c) 2023 NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+##
+## NVIDIA CORPORATION, its affiliates and licensors retain all intellectual
+## property and proprietary rights in and to this material, related
+## documentation and any modifications thereto. Any use, reproduction,
+## disclosure or distribution of this material and related documentation
+## without an express license agreement from NVIDIA CORPORATION or
+## its affiliates is strictly prohibited.
+##
+
+robot_cfg:
+  kinematics:
+    usd_path: robot/virtuoso/configuration/virtuoso.usd
+    usd_robot_root: "/robot"
+    isaac_usd_path: robot/virtuoso/configuration/virtuoso_sim.usd
+    usd_flip_joints: {}
+    usd_flip_joint_limits: []
+
+    urdf_path: robot/virtuoso/virtuoso.urdf
+    asset_root_path: robot/virtuoso
+    
+    base_link: "lbr_floating_link"
+    ee_link: "tool_tip"
+    link_names: null
+    lock_joints: null
+    extra_links: null
+
+    
+    collision_link_names: 
+      - lbr_link_0
+      - lbr_link_1
+      - lbr_link_2
+      - lbr_link_3
+      - lbr_link_4
+      - lbr_link_5
+      - lbr_link_6
+      - lbr_link_7
+      - lbr_virtuoso
+    collision_spheres: spheres/virtuoso.yml
+    collision_sphere_buffer: 0.005 
+    extra_collision_spheres: {}
+    self_collision_ignore: 
+      {
+        lbr_floating_link: [lbr_link_0, lbr_link_1],
+        lbr_link_0: [lbr_link_1, lbr_link_2],
+        lbr_link_1: [lbr_link_2, lbr_link_3],
+        lbr_link_2: [lbr_link_3, lbr_link_4],
+        lbr_link_3: [lbr_link_4, lbr_link_5],
+        lbr_link_4: [lbr_link_5, lbr_link_6],
+        lbr_link_5: [lbr_link_6, lbr_link_7],
+        lbr_link_6: [lbr_link_7, lbr_virtuoso],
+        lbr_link_7: [lbr_virtuoso, tool_tip],
+        lbr_virtuoso: [tool_tip],
+      } 
+    self_collision_buffer: 
+      lbr_link_0: 0.0
+      lbr_link_1: 0.0
+      lbr_link_2: 0.0
+      lbr_link_3: 0.0
+      lbr_link_4: 0.0
+      lbr_link_5: 0.0
+      lbr_link_6: 0.0
+      lbr_link_7: 0.0
+      lbr_virtuoso: 0.0
+
+    use_global_cumul: True
+    mesh_link_names: 
+      - lbr_link_0
+      - lbr_link_1
+      - lbr_link_2
+      - lbr_link_3
+      - lbr_link_4
+      - lbr_link_5
+      - lbr_link_6
+      - lbr_link_7
+      - lbr_virtuoso
+    external_asset_path: null 
+
+    cspace:
+      joint_names: 
+        [
+          "lbr_A1", 
+          "lbr_A2", 
+          "lbr_A3", 
+          "lbr_A4", 
+          'lbr_A5', 
+          "lbr_A6", 
+          "lbr_A7", 
+        ] 
+      retract_config: 
+        - 0.0
+        - 0.0
+        - 0.0
+        - 0.0
+        - 0.0
+        - 0.0
+        - 0.0
+      null_space_weight: 
+        - 1.0
+        - 1.0
+        - 1.0
+        - 1.0
+        - 1.0
+        - 1.0
+        - 1.0
+      cspace_distance_weight: 
+        - 1.0
+        - 0.9
+        - 0.8
+        - 0.8
+        - 0.7
+        - 0.6
+        - 0.5
+      max_jerk: 10000.0
+      max_acceleration: 15.0

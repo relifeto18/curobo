@@ -1,0 +1,58 @@
+##
+## Copyright (c) 2023 NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+##
+## NVIDIA CORPORATION, its affiliates and licensors retain all intellectual
+## property and proprietary rights in and to this material, related
+## documentation and any modifications thereto. Any use, reproduction,
+## disclosure or distribution of this material and related documentation
+## without an express license agreement from NVIDIA CORPORATION or
+## its affiliates is strictly prohibited.
+##
+
+collision_spheres:
+  lbr_link_0:
+    - "center": [0.0, 0.0, 0.05]
+      "radius": 0.06
+  lbr_link_1:
+    - "center": [0.002, -0.072, 0.12]
+      "radius": 0.1
+    - "center": [0.0, 0.0, 0.04]
+      "radius": 0.1
+    - "center": [0.004, -0.052, 0.213]
+      "radius": 0.1
+  lbr_link_2:
+    - "center": [-0.002, 0.073, 0.0]
+      "radius": 0.11658
+    - "center": [-0.009, 0.024, 0.174]
+      "radius": 0.10444
+    - "center": [-0.0, 0.068, 0.062]
+      "radius": 0.10606
+  lbr_link_3:
+    - "center": [-0.003, 0.063, 0.176]
+      "radius": 0.10132
+    - "center": [0.0, 0.026, 0.059]
+      "radius": 0.09864
+  lbr_link_4:
+    - "center": [-0.002, -0.064, 0.002]
+      "radius": 0.10624
+    - "center": [0.004, -0.026, 0.151]
+      "radius": 0.10483
+  lbr_link_5:
+    - "center": [-0.007, 0.0, 0.049]
+      "radius": 0.08762
+    - "center": [-0.002, -0.073, 0.192]
+      "radius": 0.05
+  lbr_link_6:
+    - "center": [-0.002, 0.076, -0.011]
+      "radius": 0.09088
+    - "center": [0.0, 0.069, 0.034]
+      "radius": 0.0873
+  lbr_link_7:
+    - "center": [-0.002, -0.001, 0.014]
+      "radius": 0.04368
+  lbr_virtuoso:
+    - "center": [0.002, -0.0, 0.121]
+      "radius": 0.01209
+    - "center": [-0.0, 0.0, 0.046]
+      "radius": 0.01209
+    

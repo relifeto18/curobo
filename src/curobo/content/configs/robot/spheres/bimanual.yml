@@ -1,0 +1,273 @@
+##
+## Copyright (c) 2023 NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+##
+## NVIDIA CORPORATION, its affiliates and licensors retain all intellectual
+## property and proprietary rights in and to this material, related
+## documentation and any modifications thereto. Any use, reproduction,
+## disclosure or distribution of this material and related documentation
+## without an express license agreement from NVIDIA CORPORATION or
+## its affiliates is strictly prohibited.
+##
+
+collision_spheres:
+    world:
+        - "center": [0.0, 0.0, 0.0]
+          "radius": 0.001
+    left_iiwa_table:
+        - "center": [0.0, 0.0, 0.0]
+          "radius": 0.3
+        - "center": [0.0, 0.15, 0.0]
+          "radius": 0.3
+        - "center": [0.0, -0.15, 0.0]
+          "radius": 0.3
+    left_iiwa_link_0:
+        - "center": [0.0, 0.0, 0.05]
+          "radius": 0.15
+    left_iiwa_link_1:
+        - "center": [0.0, 0.0, 0.0]
+          "radius": 0.08
+        - "center": [0.0, -0.05, 0.1]
+          "radius": 0.07
+        - "center": [0.0, -0.05, 0.18]
+          "radius": 0.08
+    left_iiwa_link_2:
+        - "center": [0.0, 0.0, 0.0]
+          "radius": 0.08
+        - "center": [0.0, 0.02, 0.06]
+          "radius": 0.07
+        - "center": [0.0, 0.1, 0.03]
+          "radius": 0.07
+        - "center": [0.0, 0.18, 0.0]
+          "radius": 0.08
+    left_iiwa_link_3:
+        - "center": [0.0, 0.0, 0.08]
+          "radius": 0.08
+        - "center": [0.0, 0.06, 0.16]
+          "radius": 0.07
+        - "center": [0.0, 0.05, 0.22]
+          "radius": 0.07
+    left_iiwa_link_4:
+        - "center": [0.0, 0.0, 0.0]
+          "radius": 0.08
+        - "center": [0.0, 0.0, 0.05]
+          "radius": 0.07
+        - "center": [0.0, 0.07, 0.05]
+          "radius": 0.06
+        - "center": [0.0, 0.11, 0.03]
+          "radius": 0.06
+        - "center": [0.0, 0.15, 0.01]
+          "radius": 0.07
+    left_iiwa_link_5:
+        - "center": [0.0, 0.0, 0.02]
+          "radius": 0.08
+        - "center": [0.0, 0.03, 0.07]
+          "radius": 0.06
+        - "center": [0.0, 0.08, 0.13]
+          "radius": 0.05
+    left_iiwa_link_6:
+        - "center": [0.0, 0.0, 0.0]
+          "radius": 0.06
+        - "center": [0., 0., 0.05]
+          "radius": 0.08
+        - "center": [0., -0.04, 0.075]
+          "radius": 0.06
+        - "center": [0., 0.08, 0.06]
+          "radius": 0.065
+        - "center": [0., 0.16, 0.06]
+          "radius": 0.05
+    left_iiwa_link_7:
+        - "center": [0.0, 0.0, 0.025]
+          "radius": 0.035
+    left_iiwa_link_ee:
+        - "center": [0.0, 0.0, 0.0]
+          "radius": 0.005
+    left_reflex_shell_link:
+        - "center": [0.0, 0.0, 0.0]
+          "radius": 0.01
+    left_reflex_pad_link:
+        - "center": [0.0, 0.0, 0.0]
+          "radius": 0.01
+    left_reflex_palm_link:
+        - "center": [0.0, 0.0, 0.0]
+          "radius": 0.01
+    left_reflex_swivel_link_1:
+        - "center": [0.0, 0.0, 0.0]
+          "radius": 0.01
+    left_reflex_proximal_link_1:
+        - "center": [0.0, 0.0, 0.0]
+          "radius": 0.01
+    left_reflex_proximal_pad_link_1:
+        - "center": [0.0, 0.0, 0.0]
+          "radius": 0.01
+    left_reflex_flex_link_1:
+        - "center": [0.0, 0.0, 0.0]
+          "radius": 0.01
+    left_reflex_distal_link_1:
+        - "center": [0.0, 0.0, 0.0]
+          "radius": 0.01
+    left_reflex_distal_pad_link_1:
+        - "center": [0.0, 0.0, 0.0]
+          "radius": 0.01
+    left_reflex_swivel_link_2:
+        - "center": [0.0, 0.0, 0.0]
+          "radius": 0.01
+    left_reflex_proximal_link_2:
+        - "center": [0.0, 0.0, 0.0]
+          "radius": 0.01
+    left_reflex_proximal_pad_link_2:
+        - "center": [0.0, 0.0, 0.0]
+          "radius": 0.01
+    left_reflex_flex_link_2:
+        - "center": [0.0, 0.0, 0.0]
+          "radius": 0.01
+    left_reflex_distal_link_2:
+        - "center": [0.0, 0.0, 0.0]
+          "radius": 0.01
+    left_reflex_distal_pad_link_2:
+        - "center": [0.0, 0.0, 0.0]
+          "radius": 0.01
+    left_reflex_proximal_link_3:
+        - "center": [0.0, 0.0, 0.0]
+          "radius": 0.01
+    left_reflex_proximal_pad_link_3:
+        - "center": [0.0, 0.0, 0.0]
+          "radius": 0.01
+    left_reflex_flex_link_3:
+        - "center": [0.0, 0.0, 0.0]
+          "radius": 0.01
+    left_reflex_distal_link_3:
+        - "center": [0.0, 0.0, 0.0]
+          "radius": 0.01
+    left_reflex_distal_pad_link_3:
+        - "center": [0.0, 0.0, 0.0]
+          "radius": 0.01
+    left_reflex_reflex2_to_iiwa_mount:
+        - "center": [0.0, 0.0, 0.0]
+          "radius": 0.01
+    left_reflex_reflex2_extra_shell:
+        - "center": [0.0, 0.0, 0.0]
+          "radius": 0.01
+    right_iiwa_table:
+        - "center": [0.0, 0.0, 0.0]
+          "radius": 0.3
+        - "center": [0.0, 0.15, 0.0]
+          "radius": 0.3
+        - "center": [0.0, -0.15, 0.0]
+          "radius": 0.3
+    right_iiwa_link_0:
+        - "center": [0.0, 0.0, 0.05]
+          "radius": 0.15
+    right_iiwa_link_1:
+        - "center": [0.0, 0.0, 0.0]
+          "radius": 0.08
+        - "center": [0.0, -0.05, 0.1]
+          "radius": 0.07
+        - "center": [0.0, -0.05, 0.18]
+          "radius": 0.08
+    right_iiwa_link_2:
+        - "center": [0.0, 0.0, 0.0]
+          "radius": 0.08
+        - "center": [0.0, 0.02, 0.06]
+          "radius": 0.07
+        - "center": [0.0, 0.1, 0.03]
+          "radius": 0.07
+        - "center": [0.0, 0.18, 0.0]
+          "radius": 0.08
+    right_iiwa_link_3:
+        - "center": [0.0, 0.0, 0.08]
+          "radius": 0.08
+        - "center": [0.0, 0.06, 0.16]
+          "radius": 0.07
+        - "center": [0.0, 0.05, 0.22]
+          "radius": 0.07
+    right_iiwa_link_4:
+        - "center": [0.0, 0.0, 0.0]
+          "radius": 0.08
+        - "center": [0.0, 0.0, 0.05]
+          "radius": 0.07
+        - "center": [0.0, 0.07, 0.05]
+          "radius": 0.06
+        - "center": [0.0, 0.11, 0.03]
+          "radius": 0.06
+        - "center": [0.0, 0.15, 0.01]
+          "radius": 0.07
+    right_iiwa_link_5:
+        - "center": [0.0, 0.0, 0.02]
+          "radius": 0.08
+        - "center": [0.0, 0.03, 0.07]
+          "radius": 0.06
+        - "center": [0.0, 0.08, 0.13]
+          "radius": 0.05
+    right_iiwa_link_6:
+        - "center": [0.0, 0.0, 0.0]
+          "radius": 0.06
+        - "center": [0., 0., 0.05]
+          "radius": 0.08
+        - "center": [0., -0.04, 0.075]
+          "radius": 0.06
+        - "center": [0., 0.08, 0.06]
+          "radius": 0.065
+        - "center": [0., 0.16, 0.06]
+          "radius": 0.05
+    right_iiwa_link_7:
+        - "center": [0.0, 0.0, 0.025]
+          "radius": 0.035
+    right_robotiq_base_link:
+        - "center": [0.0, -0.0, 0.04]
+          "radius": 0.035
+        - "center": [0.0, -0.0, 0.02]
+          "radius": 0.035
+    right_robotiq_left_outer_knuckle:
+        - "center": [0.0, 0.055, 0.01]
+          "radius": 0.01
+        - "center": [0.0, 0.08, 0.005]
+          "radius": 0.01
+    right_robotiq_left_outer_finger:
+        - "center": [0.0, -0.01, 0.0]
+          "radius": 0.01
+        - "center": [0.0, 0.015, -0.01]
+          "radius": 0.01
+    right_robotiq_left_inner_finger:
+        - "center": [0.0, 0.0, 0.0]
+          "radius": 0.01
+    right_robotiq_left_inner_finger_pad:
+        - "center": [0.0, -0.0, 0.005]
+          "radius": 0.01
+        - "center": [0.0, 0.02, 0.005]
+          "radius": 0.01
+        - "center": [0.0, -0.02, 0.005]
+          "radius": 0.01
+    right_robotiq_left_inner_knuckle:
+        - "center": [0.0, 0.04, -0.0]
+          "radius": 0.01
+        - "center": [0.0, 0.06, -0.0]
+          "radius": 0.01
+        - "center": [0.0, 0.08, -0.0]
+          "radius": 0.01
+    right_robotiq_right_outer_knuckle:
+        - "center": [0.0, 0.055, 0.01]
+          "radius": 0.01
+        - "center": [0.0, 0.08, 0.005]
+          "radius": 0.01
+    right_robotiq_right_outer_finger:
+        - "center": [0.0, -0.01, 0.0]
+          "radius": 0.01
+        - "center": [0.0, 0.015, -0.01]
+          "radius": 0.01
+    right_robotiq_right_inner_finger:
+        - "center": [0.0, 0.0, 0.0]
+          "radius": 0.01
+    right_robotiq_right_inner_finger_pad:
+        - "center": [0.0, -0.0, 0.005]
+          "radius": 0.01
+        - "center": [0.0, 0.02, 0.005]
+          "radius": 0.01
+        - "center": [0.0, -0.02, 0.005]
+          "radius": 0.01
+    right_robotiq_right_inner_knuckle:
+        - "center": [0.0, 0.04, -0.0]
+          "radius": 0.01
+        - "center": [0.0, 0.06, -0.0]
+          "radius": 0.01
+        - "center": [0.0, 0.08, -0.0]
+          "radius": 0.01

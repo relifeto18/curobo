@@ -31,7 +31,7 @@ parser.add_argument(
     default=None,
     help="To run headless, use one of [native, websocket], webrtc might not work.",
 )
-parser.add_argument("--robot", type=str, default="franka.yml", help="robot configuration to load")
+parser.add_argument("--robot", type=str, default="franka", help="robot configuration to load")
 parser.add_argument(
     "--external_asset_path",
     type=str,
@@ -159,8 +159,8 @@ def main():
     # Make a target to follow
     target = cuboid.VisualCuboid(
         "/World/target",
-        position=np.array([0.5, 0, 0.5]),
-        orientation=np.array([0, 1, 0, 0]),
+        position=np.array([0.62, -0.1, 0.803]),
+        orientation=np.array([0.5000, -0.8660, 0, 0]),
         color=np.array([1.0, 0, 0]),
         size=0.05,
     )
@@ -178,7 +178,7 @@ def main():
     robot_cfg_path = get_robot_configs_path()
     if args.external_robot_configs_path is not None:
         robot_cfg_path = args.external_robot_configs_path
-    robot_cfg = load_yaml(join_path(robot_cfg_path, args.robot))["robot_cfg"]
+    robot_cfg = load_yaml(join_path(robot_cfg_path, args.robot + ".yml"))["robot_cfg"]
 
     if args.external_asset_path is not None:
         robot_cfg["kinematics"]["external_asset_path"] = args.external_asset_path
@@ -362,7 +362,8 @@ def main():
                         spheres[si].set_radius(float(s.radius))
 
         robot_static = False
-        if (np.max(np.abs(sim_js.velocities)) < 0.5) or args.reactive:
+        print(np.max(np.abs(sim_js.velocities)))
+        if (np.max(np.abs(sim_js.velocities)) < 1.0) or args.reactive:
             robot_static = True
         if (
             (
