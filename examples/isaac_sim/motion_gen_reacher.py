@@ -172,7 +172,6 @@ def main():
 
     # warmup curobo instance
     usd_help = UsdHelper()
-    target_pose = None
 
     tensor_args = TensorDeviceType()
     robot_cfg_path = get_robot_configs_path()
@@ -258,9 +257,11 @@ def main():
     i = 0
     spheres = None
     past_cmd = None
+    target_pose = None
     target_orientation = None
     past_orientation = None
     pose_metric = None
+
     while simulation_app.is_running():
         my_world.step(render=True)
         if not my_world.is_playing():
@@ -284,7 +285,8 @@ def main():
             )
         if step_index < 20:
             continue
-
+        
+        ### update world obstacles from stage every 1000 steps ###
         if step_index == 50 or step_index % 1000 == 0.0:
             print("Updating world, reading w.r.t.", robot_prim_path)
             obstacles = usd_help.get_obstacles_from_stage(
@@ -322,6 +324,7 @@ def main():
         sim_js_names = robot.dof_names
         if np.any(np.isnan(sim_js.positions)):
             log_error("isaac sim has returned NAN joint position values.")
+
         cu_js = JointState(
             position=tensor_args.to_device(sim_js.positions),
             velocity=tensor_args.to_device(sim_js.velocities),  # * 0.0,
@@ -330,6 +333,7 @@ def main():
             joint_names=sim_js_names,
         )
 
+        ### reactive mode ###
         if not args.reactive:
             cu_js.velocity *= 0.0
             cu_js.acceleration *= 0.0
@@ -338,8 +342,10 @@ def main():
             cu_js.position[:] = past_cmd.position
             cu_js.velocity[:] = past_cmd.velocity
             cu_js.acceleration[:] = past_cmd.acceleration
-        cu_js = cu_js.get_ordered_joint_state(motion_gen.kinematics.joint_names)
 
+        cu_js = cu_js.get_ordered_joint_state(motion_gen.kinematics.joint_names)
+        
+        ### visualize spheres ###
         if args.visualize_spheres and step_index % 2 == 0:
             sph_list = motion_gen.kinematics.get_robot_as_spheres(cu_js.position)
 
@@ -361,10 +367,12 @@ def main():
                         spheres[si].set_world_pose(position=np.ravel(s.position))
                         spheres[si].set_radius(float(s.radius))
 
+        ### check if robot is static ###
         robot_static = False
-        print(np.max(np.abs(sim_js.velocities)))
-        if (np.max(np.abs(sim_js.velocities)) < 1.0) or args.reactive:
+        if (np.max(np.abs(sim_js.velocities)) < 0.5) or args.reactive:
             robot_static = True
+
+        ### check if robot is static and if the cube has moved ###
         if (
             (
                 np.linalg.norm(cube_position - target_pose) > 1e-3
@@ -388,6 +396,8 @@ def main():
             # ik_result = ik_solver.solve_single(ik_goal, cu_js.position.view(1,-1), cu_js.position.view(1,1,-1))
 
             succ = result.success.item()  # ik_result.success.item()
+
+            ### set pose metric ###
             if num_targets == 1:
                 if args.constrain_grasp_approach:
                     pose_metric = PoseCostMetric.create_grasp_approach_metric()
@@ -399,10 +409,12 @@ def main():
                 if args.hold_partial_pose is not None:
                     hold_vec = motion_gen.tensor_args.to_device(args.hold_partial_pose)
                     pose_metric = PoseCostMetric(hold_partial_pose=True, hold_vec_weight=hold_vec)
+                    
             if succ:
                 num_targets += 1
                 cmd_plan = result.get_interpolated_plan()
                 cmd_plan = motion_gen.get_full_js(cmd_plan)
+                
                 # get only joint names that are in both:
                 idx_list = []
                 common_js_names = []
@@ -418,8 +430,10 @@ def main():
 
             else:
                 carb.log_warn("Plan did not converge to a solution: " + str(result.status))
+
             target_pose = cube_position
             target_orientation = cube_orientation
+
         past_pose = cube_position
         past_orientation = cube_orientation
         if cmd_plan is not None:

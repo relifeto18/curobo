@@ -69,7 +69,7 @@ robot_cfg:
       - reflex_distal_pad_link_3
       - reflex_proximal_pad_link_3
     collision_spheres: spheres/iiwa_reflex.yml 
-    collision_sphere_buffer: 0.005 
+    collision_sphere_buffer: 0.001 
     extra_collision_spheres: {}
     self_collision_ignore: 
       {
