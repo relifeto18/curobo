@@ -23,7 +23,7 @@ robot_cfg:
     base_link: "world"
     ee_link: "grasp_frame"
     link_names: null
-    lock_joints: {"finger_joint": 0.0}
+    lock_joints: null
     extra_links: null
 
     
@@ -38,18 +38,8 @@ robot_cfg:
       - iiwa_link_5
       - iiwa_link_6
       - iiwa_link_7
-      - tool0
-      - robotiq_arg2f_base_link
-      - left_outer_knuckle
-      - left_inner_knuckle
-      - left_outer_finger
-      - left_inner_finger
-      - left_inner_finger_pad
-      - right_outer_knuckle
-      - right_inner_knuckle
-      - right_outer_finger
-      - right_inner_finger
-      - right_inner_finger_pad
+      - robotiq_to_iiwa_mount
+      - robotiq_base_link
     collision_spheres: spheres/iiwa_robotiq_test.yml 
     collision_sphere_buffer: 0.005 
     extra_collision_spheres: {}
@@ -63,148 +53,9 @@ robot_cfg:
         iiwa_link_3: [iiwa_link_4, iiwa_link_5],
         iiwa_link_4: [iiwa_link_5, iiwa_link_6],
         iiwa_link_5: [iiwa_link_6, iiwa_link_7],
-        iiwa_link_6: 
-          [ 
-            iiwa_link_7,
-            tool0,
-            robotiq_arg2f_base_link,
-            left_outer_knuckle,
-            left_outer_finger,
-            left_inner_finger,
-            left_inner_finger_pad,
-            left_inner_knuckle,
-            right_inner_knuckle,
-            right_outer_knuckle,
-            right_outer_finger,
-            right_inner_finger,
-            right_inner_finger_pad,
-          ],
-        iiwa_link_7: 
-          [ 
-            tool0,
-            robotiq_arg2f_base_link,
-            left_outer_knuckle,
-            left_outer_finger,
-            left_inner_finger,
-            left_inner_finger_pad,
-            left_inner_knuckle,
-            right_inner_knuckle,
-            right_outer_knuckle,
-            right_outer_finger,
-            right_inner_finger,
-            right_inner_finger_pad,
-          ],
-        flange: 
-          [ 
-            tool0,
-            robotiq_arg2f_base_link,
-            left_outer_knuckle,
-            left_outer_finger,
-            left_inner_finger,
-            left_inner_finger_pad,
-            left_inner_knuckle,
-            right_inner_knuckle,
-            right_outer_knuckle,
-            right_outer_finger,
-            right_inner_finger,
-            right_inner_finger_pad,
-          ],
-        tool0: 
-          [
-            robotiq_arg2f_base_link,
-            left_outer_knuckle,
-            left_outer_finger,
-            left_inner_finger,
-            left_inner_finger_pad,
-            left_inner_knuckle,
-            right_inner_knuckle,
-            right_outer_knuckle,
-            right_outer_finger,
-            right_inner_finger,
-            right_inner_finger_pad,
-          ],
-        robotiq_arg2f_base_link: 
-          [
-            left_outer_knuckle,
-            left_outer_finger,
-            left_inner_finger,
-            left_inner_finger_pad,
-            left_inner_knuckle,
-            right_inner_knuckle,
-            right_outer_knuckle,
-            right_outer_finger,
-            right_inner_finger,
-            right_inner_finger_pad,
-          ],
-        left_outer_knuckle: 
-          [
-            left_outer_finger,
-            left_inner_finger,
-            left_inner_finger_pad,
-            left_inner_knuckle,
-            right_inner_knuckle,
-            right_outer_knuckle,
-            right_outer_finger,
-            right_inner_finger,
-            right_inner_finger_pad,
-          ],
-        left_outer_finger: 
-          [
-            left_inner_finger,
-            left_inner_finger_pad,
-            left_inner_knuckle,
-            right_inner_knuckle,
-            right_outer_knuckle,
-            right_outer_finger,
-            right_inner_finger,
-            right_inner_finger_pad,
-          ],
-        left_inner_finger: 
-          [
-            left_inner_finger_pad,
-            left_inner_knuckle,
-            right_inner_knuckle,
-            right_outer_knuckle,
-            right_outer_finger,
-            right_inner_finger,
-            right_inner_finger_pad,
-          ],
-        left_inner_finger_pad: 
-          [
-            left_inner_knuckle,
-            right_inner_knuckle,
-            right_outer_knuckle,
-            right_outer_finger,
-            right_inner_finger,
-            right_inner_finger_pad,
-          ],
-        left_inner_knuckle:
-          [
-            right_inner_knuckle,
-            right_outer_knuckle,
-            right_outer_finger,
-            right_inner_finger,
-            right_inner_finger_pad,
-          ],
-        right_inner_knuckle:
-          [
-            right_outer_knuckle,
-            right_outer_finger,
-            right_inner_finger,
-            right_inner_finger_pad,
-          ],
-        right_outer_knuckle:
-          [
-            right_outer_finger,
-            right_inner_finger,
-            right_inner_finger_pad,
-          ],
-        right_outer_finger:
-          [
-            right_inner_finger,
-            right_inner_finger_pad,
-          ],
-        right_inner_finger: [right_inner_finger_pad],
+        iiwa_link_6: [iiwa_link_7, robotiq_to_iiwa_mount, robotiq_base_link],
+        iiwa_link_7: [robotiq_to_iiwa_mount, robotiq_base_link],
+        robotiq_to_iiwa_mount: [robotiq_base_link],
       } 
     self_collision_buffer: 
       world: 0.0
@@ -217,19 +68,9 @@ robot_cfg:
       iiwa_link_5: 0.0
       iiwa_link_6: 0.0
       iiwa_link_7: 0.0
-      tool0: 0.02
-      robotiq_arg2f_base_link: 0.0
-      left_outer_knuckle: 0.0
-      left_inner_knuckle: 0.0
-      left_outer_finger: 0.0
-      left_inner_finger: 0.0
-      left_inner_finger_pad: 0.0
-      right_outer_knuckle: 0.0
-      right_inner_knuckle: 0.0
-      right_outer_finger: 0.0
-      right_inner_finger: 0.0
-      right_inner_finger_pad: 0.0
-
+      robotiq_to_iiwa_mount: 0.0
+      robotiq_base_link: 0.0
+      
     use_global_cumul: True
     mesh_link_names: 
       - robot_table_link
@@ -241,15 +82,8 @@ robot_cfg:
       - iiwa_link_5
       - iiwa_link_6
       - iiwa_link_7
-      - robotiq_arg2f_base_link
-      - left_outer_knuckle
-      - left_outer_finger
-      - left_inner_finger
-      - left_inner_knuckle
-      - right_inner_knuckle
-      - right_outer_knuckle
-      - right_outer_finger
-      - right_inner_finger
+      - robotiq_to_iiwa_mount
+      - robotiq_base_link
     external_asset_path: null 
 
     cspace:
@@ -262,10 +96,8 @@ robot_cfg:
           'iiwa_joint_5', 
           "iiwa_joint_6", 
           "iiwa_joint_7", 
-          "finger_joint",
         ] 
       retract_config: 
-        - 0.0
         - 0.0
         - 0.0
         - 0.0
@@ -281,7 +113,6 @@ robot_cfg:
         - 1.0
         - 1.0
         - 1.0
-        - 1.0
       cspace_distance_weight: 
         - 1.0
         - 0.9
@@ -290,6 +121,5 @@ robot_cfg:
         - 0.7
         - 0.6
         - 0.5
-        - 1.0
       max_jerk: 500.0
       max_acceleration: 15.0
