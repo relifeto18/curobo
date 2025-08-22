@@ -10,7 +10,7 @@
   <link name="world"/>
   <!--joint between <robot_name>_world_link and robot_name_link_0-->
   <joint name="lbr_world_joint" type="fixed">
-    <origin rpy="0 0 0" xyz="0 0 0"/>
+    <origin rpy="0 0 0" xyz="0 0 1.0"/>
     <parent link="world"/>
     <child link="lbr_link_0"/>
   </joint>
