@@ -40,17 +40,29 @@ collision_spheres:
           "radius": 0.045
     robotiq_to_lbr_mount: 
         - "center": [0.0, 0.0, 0.03]
-          "radius": 0.035
+          "radius": 0.036
     robotiq_link: 
-        - "center": [0.06, 0.0, 0.08]
-          "radius": 0.015
-        - "center": [-0.06, 0.0, 0.08]
-          "radius": 0.015
+        - "center": [0.06, 0.0, 0.07]
+          "radius": 0.016
+        - "center": [-0.06, 0.0, 0.07]
+          "radius": 0.016
+        - "center": [0.08, 0.0, 0.11]
+          "radius": 0.012
+        - "center": [-0.08, 0.0, 0.11]
+          "radius": 0.012
+        - "center": [0.095, 0.0, 0.13]
+          "radius": 0.005
+        - "center": [-0.095, 0.0, 0.13]
+          "radius": 0.005
         - "center": [0.08, 0.0, 0.15]
           "radius": 0.01
         - "center": [-0.08, 0.0, 0.15]
           "radius": 0.01
-        - "center": [0.07, 0.0, 0.2]
+        - "center": [0.07, 0.0, 0.18]
           "radius": 0.005
-        - "center": [-0.07, 0.0, 0.2]
+        - "center": [-0.07, 0.0, 0.18]
+          "radius": 0.005
+        - "center": [0.07, 0.0, 0.203]
+          "radius": 0.005
+        - "center": [-0.07, 0.0, 0.203]
           "radius": 0.005
