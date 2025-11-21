@@ -259,7 +259,7 @@
     <visual>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="/home/yanxi/curobo/src/curobo/content/assets/robot/iiwa_allegro_description/meshes/robotiq/visual/robotiq_140.obj"/>
+        <mesh filename="/home/yanxi/curobo/src/curobo/content/assets/robot/iiwa_allegro_description/meshes/robotiq/visual/robotiq_140_rot.obj"/>
       </geometry>
       <material name="">
         <color rgba="0.1 0.1 0.1 1"/>
@@ -268,14 +268,14 @@
     <collision>
       <origin rpy="0 0 0" xyz="0 0 0"/>
       <geometry>
-        <mesh filename="/home/yanxi/curobo/src/curobo/content/assets/robot/iiwa_allegro_description/meshes/robotiq/collision/robotiq_140.obj"/>
+        <mesh filename="/home/yanxi/curobo/src/curobo/content/assets/robot/iiwa_allegro_description/meshes/robotiq/collision/robotiq_140_rot.obj"/>
       </geometry>
     </collision>
   </link>
   <joint name="mount_to_robotiq_link" type="fixed">
     <parent link="robotiq_to_lbr_mount"/>
     <child link="robotiq_link"/>
-    <origin rpy="0 0 0" xyz="0 0 0.0056"/>
+    <origin rpy="0 0 1.57" xyz="0 0 0.0056"/>
   </joint>
 
   <link name="grasp_frame">

@@ -21,7 +21,7 @@ robot_cfg:
     asset_root_path: robot/iiwa_allegro_description
     
     base_link: "world"
-    ee_link: "grasp_frame"
+    ee_link: "robotiq_link"
     link_names: null
     lock_joints: null
     extra_links: null
