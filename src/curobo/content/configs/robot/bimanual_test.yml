@@ -22,7 +22,7 @@ robot_cfg:
     
     base_link: "world"
     ee_link: "reflex_palm_link"
-    link_names: ["reflex_palm_link", "robotiq_grasp_frame"]
+    link_names: ["reflex_palm_link", "robotiq_link"]
     lock_joints: 
       {
         "reflex_preshape_joint_1": 0.0,
@@ -35,14 +35,14 @@ robot_cfg:
     
     collision_link_names: 
       - world
-      - left_lbr_link_0
-      - left_lbr_link_1
-      - left_lbr_link_2
-      - left_lbr_link_3
-      - left_lbr_link_4
-      - left_lbr_link_5
-      - left_lbr_link_6
-      - left_lbr_link_7
+      - right_lbr_link_0
+      - right_lbr_link_1
+      - right_lbr_link_2
+      - right_lbr_link_3
+      - right_lbr_link_4
+      - right_lbr_link_5
+      - right_lbr_link_6
+      - right_lbr_link_7
       - reflex2_to_iiwa_mount
       - reflex_proximal_link_1
       - reflex_flex_link_1
@@ -53,14 +53,14 @@ robot_cfg:
       - reflex_proximal_link_3
       - reflex_flex_link_3
       - reflex_distal_link_3
-      - right_lbr_link_0
-      - right_lbr_link_1
-      - right_lbr_link_2
-      - right_lbr_link_3
-      - right_lbr_link_4
-      - right_lbr_link_5
-      - right_lbr_link_6
-      - right_lbr_link_7
+      - left_lbr_link_0
+      - left_lbr_link_1
+      - left_lbr_link_2
+      - left_lbr_link_3
+      - left_lbr_link_4
+      - left_lbr_link_5
+      - left_lbr_link_6
+      - left_lbr_link_7
       - robotiq_to_lbr_mount
       - robotiq_link
 
@@ -70,26 +70,26 @@ robot_cfg:
     extra_collision_spheres: {}
     self_collision_ignore: 
       {
-        world: [left_lbr_link_0, left_lbr_link_1, right_lbr_link_0, right_lbr_link_1],
-        left_lbr_link_0: [left_lbr_link_1, left_lbr_link_2],
-        left_lbr_link_1: [left_lbr_link_2, left_lbr_link_3],
-        left_lbr_link_2: [left_lbr_link_3, left_lbr_link_4],
-        left_lbr_link_3: [left_lbr_link_4, left_lbr_link_5],
-        left_lbr_link_4: [left_lbr_link_5, left_lbr_link_6],
-        left_lbr_link_5: [left_lbr_link_6, left_lbr_link_7],
-        left_lbr_link_6: 
+        world: [right_lbr_link_0, right_lbr_link_1, right_lbr_link_0, right_lbr_link_1],
+        right_lbr_link_0: [right_lbr_link_1, right_lbr_link_2],
+        right_lbr_link_1: [right_lbr_link_2, right_lbr_link_3],
+        right_lbr_link_2: [right_lbr_link_3, right_lbr_link_4],
+        right_lbr_link_3: [right_lbr_link_4, right_lbr_link_5],
+        right_lbr_link_4: [right_lbr_link_5, right_lbr_link_6],
+        right_lbr_link_5: [right_lbr_link_6, right_lbr_link_7],
+        right_lbr_link_6: 
           [
-            left_lbr_link_7, 
-            left_lbr_link_ee,
+            right_lbr_link_7, 
+            right_lbr_link_ee,
             reflex2_to_iiwa_mount, 
             reflex2_extra_shell, 
             reflex_shell_link,
             reflex_pad_link,
             reflex_palm_link,
           ],
-        left_lbr_link_7: 
+        right_lbr_link_7: 
           [
-            left_lbr_link_ee, 
+            right_lbr_link_ee, 
             reflex2_to_iiwa_mount, 
             reflex2_extra_shell, 
             reflex_shell_link,
@@ -113,7 +113,7 @@ robot_cfg:
             reflex_distal_link_3,
             reflex_distal_pad_link_3,
           ],
-        left_lbr_link_ee: 
+        right_lbr_link_ee: 
           [
             reflex2_to_iiwa_mount, 
             reflex2_extra_shell, 
@@ -432,26 +432,26 @@ robot_cfg:
           [
             reflex_distal_pad_link_3,
           ],
-        right_lbr_link_0: [right_lbr_link_1, right_lbr_link_2],
-        right_lbr_link_1: [right_lbr_link_2, right_lbr_link_3],
-        right_lbr_link_2: [right_lbr_link_3, right_lbr_link_4],
-        right_lbr_link_3: [right_lbr_link_4, right_lbr_link_5],
-        right_lbr_link_4: [right_lbr_link_5, right_lbr_link_6],
-        right_lbr_link_5: [right_lbr_link_6, right_lbr_link_7],
-        right_lbr_link_6: [right_lbr_link_7, robotiq_to_lbr_mount, robotiq_link],
-        right_lbr_link_7: [robotiq_to_lbr_mount, robotiq_link],
+        left_lbr_link_0: [left_lbr_link_1, left_lbr_link_2],
+        left_lbr_link_1: [left_lbr_link_2, left_lbr_link_3],
+        left_lbr_link_2: [left_lbr_link_3, left_lbr_link_4],
+        left_lbr_link_3: [left_lbr_link_4, left_lbr_link_5],
+        left_lbr_link_4: [left_lbr_link_5, left_lbr_link_6],
+        left_lbr_link_5: [left_lbr_link_6, left_lbr_link_7],
+        left_lbr_link_6: [left_lbr_link_7, robotiq_to_lbr_mount, robotiq_link],
+        left_lbr_link_7: [robotiq_to_lbr_mount, robotiq_link],
         robotiq_to_lbr_mount: [robotiq_link],
       } 
     self_collision_buffer: 
-      left_lbr_link_0: 0.0
-      left_lbr_link_1: 0.0
-      left_lbr_link_2: 0.0
-      left_lbr_link_3: 0.0
-      left_lbr_link_4: 0.0
-      left_lbr_link_5: 0.0
-      left_lbr_link_6: 0.0
-      left_lbr_link_7: 0.0
-      left_lbr_link_ee: 0.0
+      right_lbr_link_0: 0.0
+      right_lbr_link_1: 0.0
+      right_lbr_link_2: 0.0
+      right_lbr_link_3: 0.0
+      right_lbr_link_4: 0.0
+      right_lbr_link_5: 0.0
+      right_lbr_link_6: 0.0
+      right_lbr_link_7: 0.0
+      right_lbr_link_ee: 0.0
       reflex_shell_link: 0.0
       reflex_pad_link: 0.0
       reflex_swivel_link_1: 0.0
@@ -473,27 +473,27 @@ robot_cfg:
       reflex_distal_pad_link_3: 0.0
       reflex2_to_iiwa_mount: 0.0
       reflex2_extra_shell: 0.0
-      right_lbr_link_0: 0.0
-      right_lbr_link_1: 0.0
-      right_lbr_link_2: 0.0
-      right_lbr_link_3: 0.0
-      right_lbr_link_4: 0.0
-      right_lbr_link_5: 0.0
-      right_lbr_link_6: 0.0
-      right_lbr_link_7: 0.0
+      left_lbr_link_0: 0.0
+      left_lbr_link_1: 0.0
+      left_lbr_link_2: 0.0
+      left_lbr_link_3: 0.0
+      left_lbr_link_4: 0.0
+      left_lbr_link_5: 0.0
+      left_lbr_link_6: 0.0
+      left_lbr_link_7: 0.0
       robotiq_to_lbr_mount: 0.0
       robotiq_link: 0.0
 
     use_global_cumul: True
     mesh_link_names: 
-      - left_lbr_link_0
-      - left_lbr_link_1
-      - left_lbr_link_2
-      - left_lbr_link_3
-      - left_lbr_link_4
-      - left_lbr_link_5
-      - left_lbr_link_6
-      - left_lbr_link_7
+      - right_lbr_link_0
+      - right_lbr_link_1
+      - right_lbr_link_2
+      - right_lbr_link_3
+      - right_lbr_link_4
+      - right_lbr_link_5
+      - right_lbr_link_6
+      - right_lbr_link_7
       - reflex_shell_link
       - reflex_pad_link
       - reflex_swivel_link_1
@@ -515,14 +515,14 @@ robot_cfg:
       - reflex_distal_pad_link_3
       - reflex2_to_iiwa_mount
       - reflex2_extra_shell
-      - right_lbr_link_0
-      - right_lbr_link_1
-      - right_lbr_link_2
-      - right_lbr_link_3
-      - right_lbr_link_4
-      - right_lbr_link_5
-      - right_lbr_link_6
-      - right_lbr_link_7
+      - left_lbr_link_0
+      - left_lbr_link_1
+      - left_lbr_link_2
+      - left_lbr_link_3
+      - left_lbr_link_4
+      - left_lbr_link_5
+      - left_lbr_link_6
+      - left_lbr_link_7
       - robotiq_to_lbr_mount
       - robotiq_link
     external_asset_path: null 
@@ -530,18 +530,6 @@ robot_cfg:
     cspace:
       joint_names: 
         [
-          "left_lbr_A1", 
-          "left_lbr_A2", 
-          "left_lbr_A3", 
-          "left_lbr_A4", 
-          'left_lbr_A5', 
-          "left_lbr_A6", 
-          "left_lbr_A7", 
-          "reflex_preshape_joint_1",
-          "reflex_proximal_joint_1",
-          "reflex_preshape_joint_2",
-          "reflex_proximal_joint_2",
-          "reflex_proximal_joint_3",
           "right_lbr_A1", 
           "right_lbr_A2", 
           "right_lbr_A3", 
@@ -549,6 +537,18 @@ robot_cfg:
           'right_lbr_A5', 
           "right_lbr_A6", 
           "right_lbr_A7", 
+          "reflex_preshape_joint_1",
+          "reflex_proximal_joint_1",
+          "reflex_preshape_joint_2",
+          "reflex_proximal_joint_2",
+          "reflex_proximal_joint_3",
+          "left_lbr_A1", 
+          "left_lbr_A2", 
+          "left_lbr_A3", 
+          "left_lbr_A4", 
+          'left_lbr_A5', 
+          "left_lbr_A6", 
+          "left_lbr_A7", 
         ] 
       retract_config: 
         - 0.0

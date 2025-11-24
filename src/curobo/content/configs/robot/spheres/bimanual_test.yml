@@ -13,66 +13,6 @@ collision_spheres:
     world:
         - "center": [0.0, 0.0, 0.0]
           "radius": 0.001
-    left_lbr_link_0:
-        - "center": [0.0, 0.0, 0.11]
-          "radius": 0.11
-    left_lbr_link_1:
-        - "center": [0.0, -0.04, 0.2]
-          "radius": 0.08
-    left_lbr_link_2:
-        - "center": [0.0, 0.07, 0.0]
-          "radius": 0.075
-    left_lbr_link_3:
-        - "center": [0.0, 0.0, 0.0]
-          "radius": 0.08
-        - "center": [0.0, 0.045, 0.18]
-          "radius": 0.07
-    left_lbr_link_4:
-        - "center": [0.0, -0.06, 0.01]
-          "radius": 0.07
-    left_lbr_link_5:
-        - "center": [0.0, 0.0, 0.0]
-          "radius": 0.07
-    left_lbr_link_6:
-        - "center": [0.0, 0.03, 0.0]
-          "radius": 0.058
-        - "center": [0.0, 0.08, -0.02]
-          "radius": 0.063
-    left_lbr_link_7:
-        - "center": [0.0, 0.0, 0.01]
-          "radius": 0.045
-    reflex2_to_iiwa_mount: 
-        - "center": [0.02, -0.005, 0.04]
-          "radius": 0.05
-        - "center": [-0.02, -0.005, 0.04]
-          "radius": 0.05
-    reflex_proximal_link_1: 
-        - "center": [0.0, 0.0, 0.0]
-          "radius": 0.015
-    reflex_flex_link_1: 
-        - "center": [0.0, 0.0, 0.0]
-          "radius": 0.01
-    reflex_distal_link_1: 
-        - "center": [0.0375, 0.0, 0.0]
-          "radius": 0.01
-    reflex_proximal_link_2: 
-        - "center": [0.0, 0.0, 0.0]
-          "radius": 0.015
-    reflex_flex_link_2: 
-        - "center": [0.0, 0.0, 0.0]
-          "radius": 0.01
-    reflex_distal_link_2: 
-        - "center": [0.0375, 0.0, 0.0]
-          "radius": 0.01
-    reflex_proximal_link_3: 
-        - "center": [0.0, 0.0, 0.0]
-          "radius": 0.015
-    reflex_flex_link_3: 
-        - "center": [0.0, 0.0, 0.0]
-          "radius": 0.01
-    reflex_distal_link_3: 
-        - "center": [0.0375, 0.0, 0.0]
-          "radius": 0.01
     right_lbr_link_0:
         - "center": [0.0, 0.0, 0.11]
           "radius": 0.11
@@ -101,19 +41,91 @@ collision_spheres:
     right_lbr_link_7:
         - "center": [0.0, 0.0, 0.01]
           "radius": 0.045
+    reflex2_to_iiwa_mount: 
+        - "center": [0.02, -0.005, 0.04]
+          "radius": 0.05
+        - "center": [-0.02, -0.005, 0.04]
+          "radius": 0.05
+    reflex_proximal_link_1: 
+        - "center": [0.0, 0.0, 0.0]
+          "radius": 0.013
+    reflex_flex_link_1: 
+        - "center": [0.0, 0.0, 0.0]
+          "radius": 0.007
+    reflex_distal_link_1: 
+        - "center": [0.0375, 0.0, 0.0]
+          "radius": 0.007
+    reflex_proximal_link_2: 
+        - "center": [0.0, 0.0, 0.0]
+          "radius": 0.013
+    reflex_flex_link_2: 
+        - "center": [0.0, 0.0, 0.0]
+          "radius": 0.007
+    reflex_distal_link_2: 
+        - "center": [0.0375, 0.0, 0.0]
+          "radius": 0.007
+    reflex_proximal_link_3: 
+        - "center": [0.0, 0.0, 0.0]
+          "radius": 0.013
+    reflex_flex_link_3: 
+        - "center": [0.0, 0.0, 0.0]
+          "radius": 0.007
+    reflex_distal_link_3: 
+        - "center": [0.0375, 0.0, 0.0]
+          "radius": 0.007
+    left_lbr_link_0:
+        - "center": [0.0, 0.0, 0.11]
+          "radius": 0.11
+    left_lbr_link_1:
+        - "center": [0.0, -0.04, 0.2]
+          "radius": 0.08
+    left_lbr_link_2:
+        - "center": [0.0, 0.07, 0.0]
+          "radius": 0.075
+    left_lbr_link_3:
+        - "center": [0.0, 0.0, 0.0]
+          "radius": 0.08
+        - "center": [0.0, 0.045, 0.18]
+          "radius": 0.07
+    left_lbr_link_4:
+        - "center": [0.0, -0.06, 0.01]
+          "radius": 0.07
+    left_lbr_link_5:
+        - "center": [0.0, 0.0, 0.0]
+          "radius": 0.07
+    left_lbr_link_6:
+        - "center": [0.0, 0.03, 0.0]
+          "radius": 0.058
+        - "center": [0.0, 0.08, -0.02]
+          "radius": 0.063
+    left_lbr_link_7:
+        - "center": [0.0, 0.0, 0.01]
+          "radius": 0.045
     robotiq_to_lbr_mount: 
         - "center": [0.0, 0.0, 0.03]
           "radius": 0.035
     robotiq_link: 
-        - "center": [0.06, 0.0, 0.08]
-          "radius": 0.015
-        - "center": [-0.06, 0.0, 0.08]
-          "radius": 0.015
-        - "center": [0.08, 0.0, 0.15]
-          "radius": 0.01
-        - "center": [-0.08, 0.0, 0.15]
-          "radius": 0.01
-        - "center": [0.07, 0.0, 0.2]
+        - "center": [0.0, 0.06, 0.07]
+          "radius": 0.016
+        - "center": [0.0, -0.06, 0.07]
+          "radius": 0.016
+        - "center": [0.0, 0.08, 0.11]
+          "radius": 0.012
+        - "center": [0.0, -0.08, 0.11]
+          "radius": 0.012
+        - "center": [0.0, 0.095, 0.13]
           "radius": 0.005
-        - "center": [-0.07, 0.0, 0.2]
+        - "center": [0.0, -0.095, 0.13]
+          "radius": 0.005
+        - "center": [0.0, 0.08, 0.15]
+          "radius": 0.01
+        - "center": [0.0, -0.08, 0.15]
+          "radius": 0.01
+        - "center": [0.0, 0.07, 0.18]
+          "radius": 0.005
+        - "center": [0.0, -0.07, 0.18]
+          "radius": 0.005
+        - "center": [0.0, 0.07, 0.203]
+          "radius": 0.005
+        - "center": [0.0, -0.07, 0.203]
           "radius": 0.005
