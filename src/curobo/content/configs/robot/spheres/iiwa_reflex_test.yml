@@ -45,29 +45,29 @@ collision_spheres:
           "radius": 0.05
     reflex_proximal_link_1: 
         - "center": [0.0, 0.0, 0.0]
-          "radius": 0.015
+          "radius": 0.013
     reflex_flex_link_1: 
         - "center": [0.0, 0.0, 0.0]
-          "radius": 0.01
+          "radius": 0.007
     reflex_distal_link_1: 
         - "center": [0.0375, 0.0, 0.0]
-          "radius": 0.01
+          "radius": 0.007
     reflex_proximal_link_2: 
         - "center": [0.0, 0.0, 0.0]
-          "radius": 0.015
+          "radius": 0.013
     reflex_flex_link_2: 
         - "center": [0.0, 0.0, 0.0]
-          "radius": 0.01
+          "radius": 0.007
     reflex_distal_link_2: 
         - "center": [0.0375, 0.0, 0.0]
-          "radius": 0.01
+          "radius": 0.007
     reflex_proximal_link_3: 
         - "center": [0.0, 0.0, 0.0]
-          "radius": 0.015
+          "radius": 0.013
     reflex_flex_link_3: 
         - "center": [0.0, 0.0, 0.0]
-          "radius": 0.01
+          "radius": 0.007
     reflex_distal_link_3: 
         - "center": [0.0375, 0.0, 0.0]
-          "radius": 0.01
+          "radius": 0.007
     

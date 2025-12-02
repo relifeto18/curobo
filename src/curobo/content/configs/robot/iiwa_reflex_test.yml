@@ -21,7 +21,7 @@ robot_cfg:
     asset_root_path: robot/iiwa_allegro_description
     
     base_link: "world"
-    ee_link: "reflex_palm_link"
+    ee_link: "reflex2_extra_shell"
     link_names: null
     lock_joints: 
       {
