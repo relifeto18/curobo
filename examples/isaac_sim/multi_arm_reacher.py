@@ -85,12 +85,6 @@ from curobo.wrap.reacher.motion_gen import MotionGen, MotionGenConfig, MotionGen
 ############################################################
 
 
-########### OV #################;;;;;
-
-
-############################################################
-
-
 def main():
     # assuming obstacles are in objects_path:
     my_world = World(stage_units_in_meters=1.0)
@@ -99,20 +93,16 @@ def main():
     xform = stage.DefinePrim("/World", "Xform")
     stage.SetDefaultPrim(xform)
     stage.DefinePrim("/curobo", "Xform")
-    # my_world.stage.SetDefaultPrim(my_world.stage.GetPrimAtPath("/World"))
     stage = my_world.stage
-    # stage.SetDefaultPrim(stage.GetPrimAtPath("/World"))
 
     # Make a target to follow
 
     setup_curobo_logger("warn")
-    past_pose = None
     n_obstacle_cuboids = 30
     n_obstacle_mesh = 10
 
     # warmup curobo instance
     usd_help = UsdHelper()
-    target_pose = None
 
     tensor_args = TensorDeviceType()
 
@@ -173,15 +163,9 @@ def main():
     i = 0
     spheres = None
 
-    # ---- NEW ---- per-link pose memory for multi-EE teleop
-    # (main EE uses past_pose/target_pose; other links use these dicts)
-    link_past_positions = {}
-    link_target_positions = {}
-
-    # read number of targets in link names:
+    # ---- per-link target cubes for multi-EE teleop ----
     link_names = motion_gen.kinematics.link_names
     ee_link_name = motion_gen.kinematics.ee_link
-    # get link poses at retract configuration:
 
     kin_state = motion_gen.kinematics.get_state(motion_gen.get_retract_config().view(1, -1))
 
@@ -222,20 +206,18 @@ def main():
             if i % 100 == 0:
                 print("**** Click Play to start simulation *****")
             i += 1
-            # if step_index == 0:
-            #    my_world.play()
             continue
 
         step_index = my_world.current_time_step_index
-        # print(step_index)
+
         if step_index <= 10:
-            # my_world.reset()
             robot._articulation_view.initialize()
-            idx_list = [robot.get_dof_index(x) for x in j_names]
-            robot.set_joint_positions(default_config, idx_list)
+            idx_list_init = [robot.get_dof_index(x) for x in j_names]
+            robot.set_joint_positions(default_config, idx_list_init)
 
             robot._articulation_view.set_max_efforts(
-                values=np.array([5000 for _ in range(len(idx_list))]), joint_indices=idx_list
+                values=np.array([5000 for _ in range(len(idx_list_init))]),
+                joint_indices=idx_list_init,
             )
         if step_index < 20:
             continue
@@ -260,11 +242,6 @@ def main():
 
         # position and orientation of *main* target virtual cube:
         cube_position, cube_orientation = target.get_world_pose()
-
-        if past_pose is None:
-            past_pose = cube_position
-        if target_pose is None:
-            target_pose = cube_position
 
         sim_js = robot.get_joints_state()
         if sim_js is None:
@@ -300,7 +277,7 @@ def main():
                     spheres[si].set_world_pose(position=np.ravel(s.position))
                     spheres[si].set_radius(float(s.radius))
 
-        # ---- NEW ---- read all secondary target poses and detect movement
+        # ---- read all secondary target poses (current positions) ----
         current_link_positions = {}
         current_link_orientations = {}
         for name, cube in target_links.items():
@@ -308,70 +285,39 @@ def main():
             current_link_positions[name] = c_p
             current_link_orientations[name] = c_rot
 
-        # Initialize per-link history on first use
-        for name, pos in current_link_positions.items():
-            if name not in link_past_positions:
-                link_past_positions[name] = pos
-            if name not in link_target_positions:
-                link_target_positions[name] = pos
-
-        # Has the main target cube changed since last plan?
-        main_has_new_goal = np.linalg.norm(cube_position - target_pose) > 1e-3
-        main_stopped_moving = np.linalg.norm(past_pose - cube_position) == 0.0
-
-        # Have any of the *secondary* targets changed since last plan?
-        any_link_has_new_goal = False
-        all_links_stopped = True
-        for name, pos in current_link_positions.items():
-            if np.linalg.norm(pos - link_target_positions[name]) > 1e-3:
-                any_link_has_new_goal = True
-            if np.linalg.norm(pos - link_past_positions[name]) != 0.0:
-                all_links_stopped = False
-
-        trigger_replan = (
-            (main_has_new_goal or any_link_has_new_goal)
-            and main_stopped_moving
-            and all_links_stopped
-            and np.max(np.abs(sim_js.velocities)) < 1.0
-        )
-        # ---- END NEW ----
-
-        if trigger_replan:
-            # Set EE teleop goals, use cube for simple non-vr init:
+        # ============================================================
+        # ALWAYS PLAN USING CURRENT TARGET POSES (no trigger_replan)
+        # ============================================================
+        if cmd_plan is None:
+            # Set EE teleop goals from current main target pose
             ee_translation_goal = cube_position
             ee_orientation_teleop_goal = cube_orientation
-
-            # ---- NEW ---- remember the new "goal" poses for main + all secondary links
-            target_pose = cube_position.copy()
-            for name, pos in current_link_positions.items():
-                link_target_positions[name] = pos.copy()
-            # ---- END NEW ----
 
             # compute curobo solution:
             ik_goal = Pose(
                 position=tensor_args.to_device(ee_translation_goal),
                 quaternion=tensor_args.to_device(ee_orientation_teleop_goal),
             )
-            # add link poses:
+
+            # add link poses from current secondary target cubes
             link_poses = {}
-            # ---- NEW ---- reuse current_link_positions/orientations instead of re-reading
             for name, pos in current_link_positions.items():
                 c_rot = current_link_orientations[name]
                 link_poses[name] = Pose(
                     position=tensor_args.to_device(pos),
                     quaternion=tensor_args.to_device(c_rot),
                 )
-            # ---- END NEW ----
+
             result = motion_gen.plan_single(
                 cu_js.unsqueeze(0), ik_goal, plan_config.clone(), link_poses=link_poses
             )
-            # ik_result = ik_solver.solve_single(ik_goal, cu_js.position.view(1,-1), cu_js.position.view(1,1,-1))
 
-            succ = result.success.item()  # ik_result.success.item()
-            print(succ)
+            succ = result.success.item()
+            print("Planning success:", succ)
             if succ:
                 cmd_plan = result.get_interpolated_plan()
                 cmd_plan = motion_gen.get_full_js(cmd_plan)
+
                 # get only joint names that are in both:
                 idx_list = []
                 common_js_names = []
@@ -379,20 +325,14 @@ def main():
                     if x in cmd_plan.joint_names:
                         idx_list.append(robot.get_dof_index(x))
                         common_js_names.append(x)
-                # idx_list = [robot.get_dof_index(x) for x in sim_js_names]
 
                 cmd_plan = cmd_plan.get_ordered_joint_state(common_js_names)
-
                 cmd_idx = 0
-
             else:
                 carb.log_warn("Plan did not converge to a solution: " + str(result.status))
+        # ============================================================
 
-        # update "past" positions so we can detect dragging vs. stable
-        past_pose = cube_position
-        for name, pos in current_link_positions.items():
-            link_past_positions[name] = pos
-
+        # If we have a plan, execute it
         if cmd_plan is not None:
             cmd_state = cmd_plan[cmd_idx]
 
@@ -402,7 +342,6 @@ def main():
                 cmd_state.velocity.cpu().numpy(),
                 joint_indices=idx_list,
             )
-            # set desired joint angles obtained from IK:
             articulation_controller.apply_action(art_action)
             cmd_idx += 1
             for _ in range(2):
@@ -410,6 +349,7 @@ def main():
             if cmd_idx >= len(cmd_plan.position):
                 cmd_idx = 0
                 cmd_plan = None
+
     simulation_app.close()
 
 
