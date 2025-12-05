@@ -160,7 +160,6 @@ def main():
     target = cuboid.VisualCuboid(
         "/World/target",
         position=np.array([0.62, -0.1, 0.803]),
-        orientation=np.array([0.5000, -0.8660, 0, 0]),
         color=np.array([1.0, 0, 0]),
         size=0.05,
     )

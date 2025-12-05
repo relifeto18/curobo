@@ -330,6 +330,8 @@ def main():
                 cmd_idx = 0
             else:
                 carb.log_warn("Plan did not converge to a solution: " + str(result.status))
+                
+            my_world.step()
         # ============================================================
 
         # If we have a plan, execute it
