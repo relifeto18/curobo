@@ -563,6 +563,6 @@
   <joint name="right_mount_to_robotiq_link" type="fixed">
     <parent link="right_robotiq_to_lbr_mount"/>
     <child link="right_robotiq_link"/>
-    <origin rpy="0 0 1.57" xyz="0 0 0.0056"/>
+    <origin rpy="0 0 -1.57" xyz="0 0 0.0056"/>
   </joint>
 </robot>
