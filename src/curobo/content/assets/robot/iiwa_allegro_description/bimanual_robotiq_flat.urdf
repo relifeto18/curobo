@@ -277,22 +277,8 @@
   <joint name="left_mount_to_robotiq_link" type="fixed">
     <parent link="left_robotiq_to_lbr_mount"/>
     <child link="left_robotiq_link"/>
-    <origin rpy="0 0 1.57" xyz="0 0 0.0056"/>
+    <origin rpy="0 0 1.563756" xyz="0 0 0.0055"/>
   </joint>
-
-  <!-- <link name="grasp_frame">
-    <inertial>
-      <mass value="0.01"/>
-      <inertia ixx="0.0001" ixy="0.0" ixz="0.0" iyy="0.0001" iyz="0.0" izz="0.0001"/>
-      <origin rpy="0 0 0" xyz="0 0 0"/>
-    </inertial>
-  </link>
-  <joint name="grasp_joint" type="fixed">
-    <origin rpy="0 0 0.0" xyz="0 0 0.2"/>
-    <axis xyz="0 0 1"/>
-    <parent link="robotiq_link"/>
-    <child link="grasp_frame"/>
-  </joint> -->
 
   <!-- ################################################################################################# -->
   <!-- ################################################################################################# -->
@@ -563,6 +549,6 @@
   <joint name="right_mount_to_robotiq_link" type="fixed">
     <parent link="right_robotiq_to_lbr_mount"/>
     <child link="right_robotiq_link"/>
-    <origin rpy="0 0 -1.57" xyz="0 0 0.0056"/>
+    <origin rpy="0 0 -1.563756" xyz="0 0 0.0055"/>
   </joint>
 </robot>
