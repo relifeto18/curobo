@@ -313,7 +313,6 @@ def main():
             )
 
             succ = result.success.item()
-            print("Planning success:", succ)
             if succ:
                 cmd_plan = result.get_interpolated_plan()
                 cmd_plan = motion_gen.get_full_js(cmd_plan)
